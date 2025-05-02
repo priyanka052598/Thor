@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "jsx": "react-jsx",  // Enable JSX transformation for React 17+
+    "baseUrl": ".",  // Base directory for absolute imports
+    "paths": {
+      "@/*": ["./src/*"]  // Alias "@" to refer to the "src" directory
+    },
+    "target": "ESNext",  // Set the target to the latest ECMAScript version
+    "module": "ESNext",  // Set the module system to ES Modules
+    "strict": true,  // Enable strict type checking
+    "esModuleInterop": true,  // Allow default imports from CommonJS modules
+    "skipLibCheck": true,  // Skip checking of declaration files for libraries
+    "forceConsistentCasingInFileNames": true,  // Ensure file name casing consistency
+    "moduleResolution": "node",  // Use Node.js-style module resolution
+    "resolveJsonModule": true,  // Allow importing JSON modules
+    "allowSyntheticDefaultImports": true  // Allow default imports from modules that don't have a default export
+  },
+  "include": [
+    "src/**/*"  // Include all files under the "src" folder
+  ]
+}
