@@ -4,7 +4,6 @@ import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/
 import { ChevronDown } from 'lucide-react';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Checkbox } from '@/components/ui/checkbox';
-import { Calendar } from '@/components/ui/calendar';
 import { AiOutlinePlus } from "react-icons/ai";
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
