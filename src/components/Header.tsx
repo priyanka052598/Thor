@@ -12,7 +12,7 @@ function Header() {
 
   const tabs = [
     { name: 'Home', paths: ['/'] },
-    { name: 'P.E Courses', paths: ['/pe-courses', '/Pe-Courses-session-screen', "Checkout-charter-school-first-student"] },
+    { name: 'P.E Courses', paths: ['/pe-courses', '/Pe-Courses-session-screen', '/Checkout-charter-school-first-student'] },
     { name: 'Academic Courses', paths: ['/academic-courses'] },
     { name: 'Charter Schools', paths: ['/charter-schools'] },
     { name: 'Make payment', paths: ['/virtual-payment'] },
@@ -20,7 +20,7 @@ function Header() {
   ];
 
   const isActive = (paths: string[]) => paths.includes(location.pathname);
-
+console.log("location.pathname",location.pathname)
   return (
     <div className="flex justify-between md:mx-[80px] items-center px-6 py-4 relative z-50
                     bg-transparent md:bg-transparent ">
