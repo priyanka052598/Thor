@@ -20,7 +20,7 @@ function Header() {
   ];
 
   const isActive = (paths: string[]) => paths.includes(location.pathname);
-console.log("location.pathname",location.pathname)
+console.log("location.pathname",location.pathname,isActive)
   return (
     <div className="flex justify-between md:mx-[80px] items-center px-6 py-4 relative z-50
                     bg-transparent md:bg-transparent ">
@@ -32,8 +32,13 @@ console.log("location.pathname",location.pathname)
       {/* Desktop nav */}
       <nav className="hidden md:flex ">
         <ul className="flex gap-6">
-          {tabs.map(tab => (
-            <li key={tab.name}>
+          {tabs.map(tab => 
+          
+           {
+            
+console.log("isActive(tab.paths)",isActive(tab.paths))
+            
+            return<li key={tab.name}>
               <Link
                 to={tab.paths[0]}
                 className={`text-[18px] px-3 ${
@@ -42,8 +47,8 @@ console.log("location.pathname",location.pathname)
               >
                 {tab.name}
               </Link>
-            </li>
-          ))}
+            </li>}
+          )}
         </ul>
       </nav>
       <div className=' hidden w-full h-10 bg-white '></div>
@@ -57,7 +62,7 @@ console.log("location.pathname",location.pathname)
       {/* Hamburger icon (mobile only) */}
      
       <button
-        className="md:hidden bg-white text-black text-3xl"
+        className="md:hidden bg-white rounded-full p-2 text-black text-3xl"
         onClick={() => setSidebarOpen(true)}
       >
         <HiOutlineMenu />
@@ -65,15 +70,15 @@ console.log("location.pathname",location.pathname)
 
       {/* Sidebar */}
       {sidebarOpen && (
-        <div className="fixed top-0 right-0 h-full w-2/3 bg-white text-black shadow-lg z-50 p-6 transition-all duration-300">
+        <div className="fixed top-0 right-0 h-full w-2/3  bg-white text-black shadow-lg z-50 p-6 transition-all duration-300">
           {/* Close button */}
-          <div className="flex justify-end pr-5 my-10 items-center">
-            <button onClick={() => setSidebarOpen(false)} className="text-4xl">
+          <div className="flex justify-end pb-4   items-center">
+            <button onClick={() => setSidebarOpen(false)} className="text-3xl">
               <HiOutlineX />
             </button>
           </div>
-          <div className='flex flex-col gap-[20px] justify-center items-center'>
-          <FaRegCircleUser className="text-[135px]" />
+          <div className='flex flex-col gap-[10px] justify-center items-center'>
+          <FaRegCircleUser className="text-[85px]" />
   <Button text="Login" textColor="text-white" bgColor="bg-[#484A5C]"/>
 
          
@@ -81,12 +86,12 @@ console.log("location.pathname",location.pathname)
 
           {/* Nav links */}
           <nav className="mt-6">
-            <ul className="flex flex-col space-y-4">
+            <ul className="flex flex-col space-y-3">
               {tabs.map(tab => (
                 <li key={tab.name}>
                   <Link
                     to={tab.paths[0]}
-                    className={`block text-[20px] ${
+                    className={`block text-[17px] ${
                       isActive(tab.paths) ? 'text-[#1B69FF]' : ''
                     }`}
                     onClick={() => setSidebarOpen(false)}

@@ -13,43 +13,43 @@ import { FaWhatsapp } from "react-icons/fa";
 
 function Footer() {
   return (
-    <div className='bg-[url("/footer-image.svg")] bg-cover h-[620px] py-10'>
-      <div className='flex justify-between  px-[100px] pt-20'>
+    <div className='md:bg-[url("/footer-image.svg")] bg-[url("/sm-footer.png")] bg-cover w-full md:h-[620px] py-10'>
+      <div className='md:flex  justify-between  md:px-[100px] px-[20px] md:pt-20 pt-10'>
   {/* Left Section */}
-  <div className='w-1/3 flex flex-col  gap-[60px]'>
-        <img className='w-[30%]' src="/logo-1.svg" alt="Logo" />
-        <p className='text-[24px] text-white'>
+  <div className='md:w-1/3 flex flex-col  md:gap-[60px] gap-[10px]'>
+        <img className='md:w-[30%] w-[20%]' src="/logo-1.svg" alt="Logo" />
+        <p className='md:text-[24px]  text-white'>
           Classes for homeschool, after<br />
           school, unschooling students
         </p>
 
         {/* Social Media Icons */}
-        <div className='flex gap-4 '>
-          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className='bg-white rounded-full w-[40px] h-[40px] p-2 flex justify-center items-center'>
-            <TiSocialFacebook className='text-[33px] text-[#484A5C]' />
+        <div className='flex md:gap-4 gap-3 '>
+          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className='bg-white rounded-full md:w-[40px] md:h-[40px] w-[30px] h-[30px] md:p-2 p-1 flex justify-center items-center'>
+            <TiSocialFacebook className='md:text-[35px] text-[20px] text-[#484A5C]' />
           </a>
-          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className='bg-white rounded-full w-[40px] h-[40px] p-2 flex justify-center items-center'>
-            <BsInstagram className='text-[35px] text-[#484A5C]' />
+          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className='bg-white rounded-full md:w-[40px] md:h-[40px] w-[30px] h-[30px] md:p-2 p-1 flex justify-center items-center'>
+            <BsInstagram className='md:text-[35px] text-[20px] text-[#484A5C]' />
           </a>
-          <a href="https://wa.me" target="_blank" rel="noopener noreferrer" className='bg-white rounded-full w-[40px] h-[40px] p-2 flex justify-center items-center'>
-            <FaWhatsapp className='text-[35px] text-[#484A5C]' />
+          <a href="https://wa.me" target="_blank" rel="noopener noreferrer" className='bg-white rounded-full md:w-[40px] md:h-[40px] w-[30px] h-[30px] md:p-2 p-1 flex justify-center items-center'>
+            <FaWhatsapp className='md:text-[35px] text-[20px] text-[#484A5C]' />
           </a>
-          <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className='bg-white rounded-full w-[40px] h-[40px] p-2 flex justify-center items-center'>
-            <LuYoutube className='text-[35px] text-[#484A5C]' />
+          <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className='bg-white rounded-full md:w-[40px] md:h-[40px] w-[30px] h-[30px] md:p-2 p-1 flex justify-center items-center'>
+            <LuYoutube className='md:text-[35px] text-[20px] text-[#484A5C]' />
           </a>
-          <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className='bg-white rounded-full w-[40px] h-[40px] p-2 flex justify-center items-center'>
-            <FaXTwitter className='text-[35px] text-[#484A5C]' />
+          <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className='bg-white rounded-full md:w-[40px] md:h-[40px] w-[30px] h-[30px] md:p-2 p-1 flex justify-center items-center'>
+            <FaXTwitter className='md:text-[35px] text-[20px] text-[#484A5C]' />
           </a>
-          <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className='bg-white rounded-full w-[40px] h-[40px] p-2 flex justify-center items-center'>
-            <FaLinkedinIn className='text-[35px] text-[#484A5C]' />
+          <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className='bg-white rounded-full md:w-[40px] md:h-[40px] w-[30px] h-[30px] md:p-2 p-1 flex justify-center items-center'>
+            <FaLinkedinIn className='md:text-[35px] text-[20px] text-[#484A5C]' />
           </a>
         </div>
       </div>
 
       {/* Middle Section */}
-      <div className=' flex flex-col   gap-[20px] mx-28 '>
-        <h3 className='text-[24px] text-white text-left'>Links</h3>
-        <div className='text-[20px] my-[10px] text-white flex flex-col gap-3'>
+      <div className=' flex flex-col md:mt-0  mt-[40px] md:gap-[20px] gap-[10px] md:mx-28 '>
+        <h3 className='md:text-[24px] text-[22px] text-white text-left'>Links</h3>
+        <div className='md:text-[20px] text-[16px] md:my-[10px] text-white flex flex-col md:gap-3 gap-1'>
           <span>Home</span>
           <span>P.E Courses</span>
           <span>Academic Courses</span>
@@ -60,26 +60,26 @@ function Footer() {
       </div>
 
       {/* Right Section */}
-      <div className='w-1/3 flex flex-col gap-[30px]'>
-        <h3 className='text-[24px] text-white'>Contact Us</h3>
+      <div className='md:w-1/3 flex flex-col md:mt-0  mt-[40px]  md:gap-[20px] gap-[10px]'>
+        <h3 className='md:text-[24px] text-[22px] text-white'>Contact Us</h3>
         <div className='flex gap-3 items-center'>
           <MdOutlineMail className='text-white text-[24px]' />
-          <span className='text-[18px] text-white'>YouthMovement.CA@gmail.com</span>
+          <span className='md:text-[18px] text-[16px] text-white'>YouthMovement.CA@gmail.com</span>
         </div>
         <div className='flex gap-3 items-center'>
           <MdPhoneInTalk className='text-white text-[24px]' />
-          <span className='text-[18px] text-white'>(209) 483-9667</span>
+          <span className='md:text-[18px] text-[16px] text-white'>(209) 483-9667</span>
         </div>
         <div className='flex gap-3 items-center'>
           <LuMapPin className='text-white text-[24px]' />
-          <span className='text-[18px] text-white'>343 W. Viento St. Mountain House, CA 95391</span>
+          <span className='md:text-[18px] text-[16px] text-white'>343 W. Viento St. Mountain House, CA 95391</span>
         </div>
       </div>
       </div>
       <div className='w-full h-[1px] mt-12 mb-8 bg-white'></div>
-    <div className='px-[100px] text-[18px] pb-5 flex justify-between text-white'>
+    <div className='md:px-[100px] pl-[15px]  md:text-[18px] text-[16px] pb-5 md:flex flex-col md:justify-between text-white'>
       <span>Copyright & Branding Info: “©️ 2025 YOUTH MOVEMENT</span>
-      <span>All Rights Reserved</span>
+      <span className=''>All Rights Reserved</span>
     </div>
     </div>
   )

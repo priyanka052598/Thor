@@ -4,7 +4,7 @@ function ProfileUi() {
   return (
     <div>     {/* Profile Image inside background */}
     <div
-className="relative w-[260px] h-[272px] overflow-hidden"
+className="relative md:w-[260px] md:h-[270px] w-[120px] h-[130px] overflow-hidden"
 style={{
 borderTopLeftRadius: '258px',
 borderBottomLeftRadius: '200px',

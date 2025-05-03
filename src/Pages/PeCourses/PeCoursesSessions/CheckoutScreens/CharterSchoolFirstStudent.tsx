@@ -433,8 +433,14 @@ const handleProceed = () => {
       </div>
 
         </div>
-        <div className='w-2/5 h-min overflow-hidden  border-[1px] border-[#484A5C] border-b-[12px]  rounded-[16px]'>
-<img className='w-full' src="/order-summary-image.svg" alt="" />
+        <div className='w-2/5 h-min bg- overflow-hidden  border-[1px] border-[#484A5C] border-b-[12px]  rounded-[16px]'>
+        <div className="relative flex justify-center items-center">
+  <img className="w-full" src="/order-summary-image.png" alt="" />
+  <h2 className="absolute inset-0 flex items-center justify-center text-white text-3xl font-semibold">
+    Order Summary
+  </h2></div>
+
+
 <div className='p-[40px] flex flex-col gap-[24px]'>
   <div className='bg-[#F4E5FF] flex flex-col gap-[8px] p-[24px] rounded-[16px]'>
     <div className='flex justify-between items-center text-[20px] '><span>Cost for First student</span> <span>63$</span></div>

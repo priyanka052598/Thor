@@ -61,8 +61,8 @@ function ContactUsComponent({ heading = "Contact Us" }) {
   return (
     <div>
 
-      <div className='flex mx-[100px] mt-[200px] h-[700px] overflow-hidden mb-[130px] border-[2px] border-[#484A5C] border-b-[12px] rounded-[24px]'>
-        <img className='w-[50%] h-full object-cover' src="/contact-us.svg" alt="" />
+      <div className='flex md:mx-[100px] mx-[20px] mt-[200px] md:h-[700px] overflow-hidden mb-[130px] border-[2px] border-[#484A5C] border-b-[12px] rounded-[24px]'>
+        <img className='md:w-[50%] sm:block hidden h-full object-cover' src="/contact-us.svg" alt="" />
         {
           showPopup ?
           <div className=' w-full bg-[#F4E5FF] flex justify-center items-center '>
@@ -70,9 +70,9 @@ function ContactUsComponent({ heading = "Contact Us" }) {
           </div>
      
 :
-<div className='flex flex-col gap-[15px] px-[40px] py-[15px] bg-[#F4E5FF] w-[50%]'>
+<div className='flex flex-col gap-[15px] md:px-[40px] px-[15px] md:py-[15px] py-[30px] bg-[#F4E5FF] md:w-[50%]'>
 <div className='flex flex-col'>
-  <h3 style={{ fontFamily: 'Clash Display', fontWeight: 500 }} className='text-[40px]'>
+  <h3 style={{ fontFamily: 'Clash Display', fontWeight: 500 }} className='md:text-[40px] text-[28px]'>
     {heading}
   </h3>
   <img className='w-[50%]' src="/line-1.svg" alt="" />
@@ -80,7 +80,7 @@ function ContactUsComponent({ heading = "Contact Us" }) {
 
 <div className='flex flex-col gap-2'>
   <Input 
-    className={`bg-white py-5 text-[24px] mt-6 ${errors.name ? 'border-red-500' : ''}`} 
+    className={`bg-white py-5 md:text-[24px] mt-6 ${errors.name ? 'border-red-500' : ''}`} 
     type="text" 
     placeholder="Your Name"
     value={formData.name}

@@ -172,17 +172,24 @@ function Home() {
       <img
         src="/Engaging.svg"
         alt="Background"
-        className="w-full h-auto object-cover" 
+        className="w-full h-auto object-cover hidden sm:block" 
       />
+
+        {/* Background Image for small screens */}
+  <img
+    src="/sm-home-main.svg" // use your mobile image path here
+    alt="Mobile Background"
+    className="w-full h-auto object-cover block sm:hidden"
+  />
 
       {/* Absolute Content over Image */}
       <div className="absolute inset-0">
         <Header /> 
 
         {/* Center Text */}
-        <div className="flex flex-col items-center justify-center gap-[26px] pt-10">
+        <div className="flex flex-col items-center justify-center gap-[26px] md:pt-10 pt-2">
           <span
-            className="text-[60px] text-white text-center leading-[1.4]"
+            className="md:text-[60px] text-[22px] text-white text-center leading-[1.4]"
             style={{
               fontFamily: 'Clash Display',
               fontWeight: 500
@@ -191,7 +198,7 @@ function Home() {
             Engaging Physical & Academic <br /> Classes, All in One Place!
           </span>
           {/* buttons */}
-          <div className='flex gap-[40px]'>
+          <div className='md:flex justify-center items-center  md:gap-[40px] sm:gap-[10px]'>
 <Button text="Explore Courses" bgColor="bg-transparent" textColor="text-white"  showArrow={true} />
 <Button text="Enroll Now" bgColor="bg-white" textColor="text-black" showArrow={true} />
           </div>
@@ -199,28 +206,24 @@ function Home() {
       </div>
     </div>
      {/* Video part */}
-     <div className="relative w-full">
-  {/* Background Image right aligned */}
+     <div className="relative md:mx-1   w-full">
   <img
-    className="absolute right-0 top-0 w-auto h-auto object-contain"
+  className="absolute right-0 top-0 md:w-[100%] w-[90%] h-auto object-contain"
     src="/video-part-bg.svg"
     alt=""
   />
 
-  {/* Foreground: Laptop + Video */}
   <div className="relative flex justify-center items-center pt-20">
    
     <div className="relative">
-      {/* Laptop Image */}
       <img
-        className="w-[300%]"
+        className="md:w-[300%] w-[280px] object-contain"
         src="/video-part-laptop.svg"
         alt=""
       />
 
-      {/* Video inside laptop screen */}
       <video
-        className="absolute top-[3%] left-[.5%] w-[99%]  object-cover rounded-md pointer-events-auto"
+        className="absolute top-[3%] left-[.5%] md:w-[99%] w-[99%]  object-cover rounded-md pointer-events-auto"
         src="/video.mp4"
         autoPlay
         loop
@@ -232,17 +235,17 @@ function Home() {
   </div>
 </div>
 {/* What we do offer */}
-<div className='my-[160px]'>
+<div className='md:my-[160px] my-[80px]'>
 <CommonHeading  bottomcolor='blue' text="What We Do Offer"/>
   {/* Cards  */}
-  <div className="flex justify-center flex-wrap gap-[80px] mt-[80px]">
+  <div className="flex justify-center flex-wrap md:mx-0 mx-[20px] gap-[80px] md:mt-[80px] mt-[40px]">
         {cards.map((card) => (
           <div
             key={card.id}
-            className="w-[500px] h-[580px] border-[2px] border-b-[12px] border-[#484A5C] rounded-[16px] overflow-hidden flex flex-col"
+            className="w-[500px] md:h-[580px] border-[2px] border-b-[12px] border-[#484A5C] rounded-[16px] overflow-hidden flex flex-col"
           >
             {/* Image */}
-            <div className="w-full h-[65%]">
+            <div className="w-full md:h-[65%]">
               <img
                 className="w-full h-full object-cover"
                 src={card.image}
@@ -251,19 +254,19 @@ function Home() {
             </div>
 
             {/* Text and Button */}
-            <div className="px-[35px] py-[15px] flex flex-col justify-between gap-[10px]">
+            <div className="md:px-[35px] px-[15px] md:py-[15px] py-[30px] flex flex-col justify-between md:gap-[10px]">
               <h3
                 style={{
                   fontFamily: 'Clash Display',
                   fontWeight: 500,
                 }}
-                className="text-[30px] text-center"
+                className="md:text-[30px] text-[24px] text-center"
               >
                 "{card.title}"
               </h3>
 
-              <div className="flex justify-between items-center mt-6">
-                <span className="text-[24px] text-[#808080]">{card.courses}</span>
+              <div className="flex justify-between items-center md:mt-6 mt-3">
+                <span className="md:text-[24px] text-[15px] text-[#808080]">{card.courses}</span>
                 <Button
                   text="Explore Courses"
                   bgColor="bg-[#484A5C]"
@@ -281,54 +284,57 @@ function Home() {
   <h3 style={{
     fontFamily: 'Clash Display',
     fontWeight: 500
-  }} className='text-[40px] text-center'>Trusted by 30+ Charter Schools</h3>
+  }} className='md:text-[40px] mx-[20px] text-[24px] text-center'>Trusted by 30+ Charter Schools</h3>
 
 {/* logos */}
 
-<div className='flex justify-around mx-[80px] gap-[30px]'>
+<div className='flex   flex-wrap justify-around  md:mx-[80px] mx-[20px] md:gap-[30px] gap-[10px]'>
 {trustedLogos.map((logo) => (
-  <div className='flex  flex-col justify-center items-center   w-[15%]  gap-[20px] mt-[40px]'>
-    <img className='w-[80%] ' src={logo.image} alt="" />
-    <p className='text-[25px]  text-black text-center'>{logo.text}</p>
+  <div className='flex  flex-col justify-center items-center md:w-[15%] w-[45%]    gap-[20px] mt-[40px]'>
+    <img className='md:w-[80%] w-[70%]  ' src={logo.image} alt="" />
+    <p className='md:text-[25px] text-[15px]  text-black text-center'>{logo.text}</p>
   </div>
 ))}
 </div>
 </div>
 {/* About us */}
-<div className='my-[160px] w-[88%] mx-auto  overflow-hidden border-[2px] border-[#484A5C] border-b-[12px] rounded-[16px] flex'>
-<div className='w-[50%] px-[30px] py-[50px]   bg-[#4177C7]'>
+<div className='md:my-[160px] my-[80px] w-[88%] mx-auto  overflow-hidden border-[2px] border-[#484A5C] border-b-[12px] rounded-[16px] flex'>
+<div className='md:w-[50%] px-[30px] py-[50px]   bg-[#4177C7]'>
   <h3 style={{
     fontFamily: 'Clash Display',
     fontWeight: 500
-  }} className='text-white text-[56px] '>About Us</h3>
+  }} className='text-white md:text-[56px] text-[28px] '>About Us</h3>
   <img className='w-[40%]  mb-5' src="/line-2.svg" alt="" />
-  <p className='text-[24px] text-white'>
+  <p className='md:text-[24px] text-white'>
   Youth Movement is a dynamic initiative dedicated to empowering young minds through a perfect blend of physical education and academic excellence. We aim to create a nurturing environment where children grow stronger, smarter, and more confident—both inside and outside the classroom. With a team of experienced instructors and a values-driven approach, we are committed to shaping the next generation with purpose, discipline, and holistic growth.
   </p>
 </div>
-<div className='ml-10'><img className='item-center' src="/about-us.svg" alt="" /></div>
+<div className='ml-10 sm:block hidden'><img className='item-center' src="/about-us.svg" alt="" /></div>
 </div>
 {/* Meet our Instructors */}
-{/* <div>
+<div>
   <CommonHeading bottomcolor='blue' text="Meet Our Instructors"/>
-  <div className='flex  justify-center items-center mt-[60px] gap-[70px]'>
+  <div className='flex flex-wrap w-full  justify-center items-center mt-[60px] md:gap-[70px] gap-[40px]' >
   {instructors.map((instructor, index) => (
-    <div key={index} className='flex flex-col justify-center items-center gap-[30px]'>
+    <div key={index} className='flex flex-wrap flex-col justify-center items-center md:gap-[30px] gap-[20px]'>
+      <div className=''>
       {instructor.profile}
-      <div className='flex flex-col justify-center items-center gap-[7px]'>
+      </div>
+     
+      <div className='flex flex-col justify-center items-center md:gap-[7px] '>
         <h3
           style={{ fontFamily: 'Clash Display', fontWeight: 500 }}
-          className='text-[24px] text-center'
+          className='md:text-[20px] text-[20px] text-center'
         >
           {instructor.name}
         </h3>
-        <p className='text-[20px] text-center'>{instructor.title}</p>
+        <p className='md:text-[20px] text-[16px] text-center'>{instructor.title}</p>
       </div>
     </div>
   ))}
 </div>
 
-</div> */}
+</div>
 
 {/* What we believe at Youth movement */}
 <div className=''  style={{
@@ -338,22 +344,22 @@ function Home() {
 
 
 <div  className='flex justify-between  items-center w-[90%] py-[40px] mx-auto my-[160px]'>
-  <img className='w-[45%]' src="/youth-movement-girl-image.svg" alt="" />
-  <div className='w-[50%] flex flex-col gap-[25px]'>
+  <img className='w-[45%] sm:block hidden' src="/youth-movement-girl-image.svg" alt="" />
+  <div className='md:w-[50%] flex flex-col gap-[25px]'>
     <h3 style={{
       fontFamily: 'Clash Display',
       fontWeight: 500
-    }} className='text-[40px] text-white '>What we believe at Youth movement</h3>
+    }} className='md:text-[40px] text-[26px] text-white '>What we believe at Youth movement</h3>
     <div className='flex flex-col '>
       {youthMovement.map((item) => (
         <div className='flex items-center text-white  gap-[20px] my-[20px]'>
-          <img className='w-[80px]' src={item.image} alt="" />
+          <img className='md:w-[80px] w-[50px]' src={item.image} alt="" />
         <div>
           <h3 style={{
             fontFamily: 'Clash Display',
             fontWeight: 500
-          }} className='text-[24px]'>{item.heading}</h3>
-          <p className='text-[20px]'>{item.text}</p>
+          }} className='md:text-[24px] text-[20px]'>{item.heading}</h3>
+          <p className='md:text-[20px] text-[16px]'>{item.text}</p>
         </div>
         </div>
       ))}
@@ -365,9 +371,9 @@ function Home() {
 {/* Parent Testimonials */}
 <div>
   <CommonHeading bottomcolor='blue' text="Parent Testimonials" />
-  <div className='mx-[100px]  mt-[80px]  flex justify-around items-center border-[2px] border-[#484A5C] border-b-[12px] rounded-[16px]'>
+  {/* <div className='mx-[100px]  mt-[80px]  flex justify-around items-center border-[2px] border-[#484A5C] border-b-[12px] rounded-[16px]'>
     {testinomial.map((item,index) => (
-      <div className={`w-[31%] flex flex-col h-[100%] ${ index<2 && "border-r-[2px]" } border-[#484A5C] justify-between p-[30px] gap-[30px]`} key={item.id}>
+      <div className={`md:w-[31%] flex flex-col h-[100%] ${ index<2 && "border-r-[2px]" } border-[#484A5C] justify-between p-[30px] gap-[30px]`} key={item.id}>
         <img className='w-[22%]' src={item.image} alt={item.name} />
         <p  className='text-[20px] line-clamp-6 '> {item.text}</p>
         <h3 style={{
@@ -377,34 +383,35 @@ function Home() {
       </div>
     ))}
   </div>
-  <img className='w-full ' src="/parent-testimonial-bottom-image.svg" alt="" />
+  <img className='w-full ' src="/parent-testimonial-bottom-image.svg" alt="" /> */}
 </div>
 
 {/* All you need to know - FAQS */}
-<div className='m-[100px]  '>
+<div className='md:m-[100px] mx-[20px]  '>
   <h3 style={{
     fontFamily: 'Clash Display',
     fontWeight: 500
-  }} className='text-[56px] my-[30px]'>All you need to know - FAQS</h3>
-<Accordion className="border-[2px] border-[#484A5C] rounded-[20px] border-b-[12px] px-[30px] py-[20px]" type="single" collapsible>
+  }} className='md:text-[56px] text-[28px] my-[30px]'>All you need to know - FAQS</h3>
+<Accordion className="border-[2px] border-[#484A5C] rounded-[20px] border-b-[12px] md:px-[30px] px-[10px] py-[20px]" type="single" collapsible>
   {faq.map(({ id, question, answer }) => (
     <AccordionItem key={id} value={`item-${id}`}>
-      <AccordionTrigger className="text-[22px]  pr-4 relative after:hidden [&>svg]:hidden group hover:no-underline">
-        {question} {/* Use `question` here instead of `faq` */}
-        <div className="ml-auto cursor-pointer flex items-center relative">
+      <AccordionTrigger className="md:text-[22px]  text-[17px]  flex justify-between item-center md:pr-4 pr-0 relative after:hidden [&>svg]:hidden group hover:no-underline">
+     <div className='md:w-[80%] w-[90%]'>    {question} {/* Use `question` here instead of `faq` */}
+      </div>
+        <div className="ml-auto w-[40px] cursor-pointer flex  relative">
           <img
             src="/plus-icon.svg"
             alt="plus"
-            className="h-12 w-12 transition-all duration-200 group-data-[state=open]:hidden"
+            className="md:h-12 md:w-12 h-7 w-7 transition-all duration-200 group-data-[state=open]:hidden"
           />
           <img
             src="/minus-icon.svg"
             alt="minus"
-            className="h-12 w-12 transition-all duration-200 hidden group-data-[state=open]:block"
+            className="md:h-12 md:w-12 w-7 h-  transition-all duration-200 hidden group-data-[state=open]:block"
           />
         </div>
       </AccordionTrigger>
-      <AccordionContent className="text-[20px]">
+      <AccordionContent className="md:text-[20px] text-[16px]">
         {answer} {/* Use `answer` here */}
       </AccordionContent>
     </AccordionItem>
@@ -417,11 +424,11 @@ function Home() {
 
 </div>
 {/* Ready to give your child a head start? */}
-<div className="bg-[url('/head-start-image.svg')] bg-cover bg-center rounded-[24px] mx-[100px]     h-[100%] py-[100px] flex items-center justify-center">
+<div className="md:bg-[url('/head-start-image.svg')] bg-[url('/sm-head-start-image.png')] bg-cover bg-center md:mt-0 mt-[50px] rounded-[24px] mx-[20px] md:mx-[100px] md:w-[86%] w-[90%] h-[400px]  md:pt-0 pt-7    md:py-[100px] flex md:items-center justify-center">
   <span style={{
     fontFamily: 'Clash Display',
     fontWeight: 500
-  }} className="text-[56px] text-white text-center w-[58%] leading-[1.3] mx-auto">
+  }} className="md:text-[56px]  text-[32px] text-white text-center md:w-[58%] w-full leading-[1.3] mx-auto">
     Ready to give your child a head start?
   </span>
 </div>

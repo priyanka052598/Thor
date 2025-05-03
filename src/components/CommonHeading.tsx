@@ -7,26 +7,26 @@ interface HeadingProps {
 
 function CommonHeading({ text,bottomcolor }: HeadingProps) {
   return (
-    <div className='flex flex-col justify-center items-center'>
+    <div className='flex flex-col justify-center w-full items-center'>
 
  
-    <div className="flex justify-center items-center gap-[24px]">
-      <img className="w-[10%]" src="/pencil.svg" alt="Left Pencil" />
+    <div className="flex justify-center items-center md:gap-[24px] gap-[5px]">
+      <img className="md:w-[10%] w-[10%]" src="/pencil.svg" alt="Left Pencil" />
       <h2
         style={{
           fontFamily: 'Clash Display',
           fontWeight: 500,
         }}
-        className="text-[65px] w-full text-black text-center"
+        className="md:text-[65px] w-fit text-[24px]  text-black text-center"
       >
         {text}
       </h2>
 
-      <img className="w-[10%]" src="/pencil.svg" alt="Right Pencil" />
+      <img className="md:w-[10%] w-[10%]" src="/pencil.svg" alt="Right Pencil" />
     </div>
     {
       bottomcolor == "blue" && 
-      <img src="/line-1.svg" alt="" />
+      <img className='md:w-[35%] w-[50%] object-cover' src="/line-1.svg" alt="" />
     }
 
     

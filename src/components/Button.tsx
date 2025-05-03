@@ -25,16 +25,16 @@ function Button({
   return (
     <button
       onClick={onClick}
-      className={`flex items-center cursor-pointer justify-center gap-2 w-fit px-6 py-3 rounded-[8px] font-semibold ${bgColor} ${textColor} ${textSize}`}
+      className={`flex  items-center cursor-pointer justify-center gap-2 w-fit px-6 py-3 rounded-[8px] font-semibold ${bgColor} ${textColor} ${textSize}`}
       style={{
         borderWidth: borderWidth,
         borderColor: borderColor,
         borderStyle: 'solid',
       }}
     >
-      <span className='text-[20px]'>{text}</span>
+      <span className='md:text-[20px] text-[12px]'>{text}</span>
       {showArrow && (
-        <GoArrowRight className={`text-[24px] ${textColor}`} />
+        <GoArrowRight className={`md:text-[24px] text-[16px] ${bgColor} ${textColor}`} />
       )}
     </button>
   )
