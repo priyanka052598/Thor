@@ -14,7 +14,12 @@ function VirtualPayment() {
     <img
       src="/virtual-image.svg"
       alt="Background"
-      className="w-full h-auto object-cover" 
+      className="w-full md:block hidden h-auto object-cover" 
+    />
+    <img
+      src="/sm-virtual-payment.png"
+      alt="Background"
+      className="w-full md:hidden block h-auto object-cover" 
     />
 
     {/* Absolute Content over Image */}
@@ -23,9 +28,9 @@ function VirtualPayment() {
       <Header /> 
 
       {/* Center Text */}
-      <div className="flex flex-col items-center justify-center gap-[26px] pt-10">
+      <div className="flex flex-col items-center justify-center gap-[26px] md:pt-10 pt-20">
         <span
-          className="text-[60px] text-white text-center leading-[1.4]"
+          className="md:text-[60px] text-[30px] text-white text-center leading-[1.4]"
           style={{
             fontFamily: 'Clash Display',
             fontWeight: 500
@@ -38,34 +43,34 @@ function VirtualPayment() {
       </div>
       </div>
       <div className=' mx-auto flex flex-col items-center justify-center gap-[50px] my-[100px]  '>
-        <div className='border-[1px] w-[70%] mx-auto border-[#484A5C] border-b-[12px] gap-[80px] rounded-[16px] p-10'>
-        <h2  style={{fontFamily: 'Clash Display', fontWeight: 500}} className='text-[32px]'>Please Include</h2>
+        <div className='border-[1px] md:w-[70%] w-[90%] md:mx-auto mx-[20px] border-[#484A5C] border-b-[12px] gap-[80px] rounded-[16px] md:p-10 p-5'>
+        <h2  style={{fontFamily: 'Clash Display', fontWeight: 500}} className='md:text-[32px] text-[24px]'>Please Include</h2>
         <div>
 {
     ["Course Name","Session ID", "Name of students","Month the payment is for"].map((item,index) => (
-        <p className='text-[20px]'>{ index + 1}. {item}</p>
+        <p className='md:text-[20px] text-[16px]'>{ index + 1}. {item}</p>
     ))
 }
         </div>
         </div>
        
-      <div className='flex justify-center w-full   '>
-<div className='flex flex-col w-[25%]  items-center justify-center gap-4'>
-    <img src="/scan-image.png" alt="" />
-    <h2 style={{fontFamily: 'Clash Display', fontWeight: 500}} className='text-[32px]'>Debit Card</h2>
-    <p className='text-[20px]'>@youthmovementCA</p>
+      <div className='md:flex md:flex-row flex-col gap-[10px] justify-center items-center mx-[20px]  w-full   '>
+<div className='flex flex-col md:w-[25%]  items-center justify-center md:gap-4 gap-2'>
+    <img className='md:w-[83%] w-[80%]' src="/scan-image.png" alt="" />
+    <h2 style={{fontFamily: 'Clash Display', fontWeight: 500}} className='md:text-[32px] text-[24px]'>Debit Card</h2>
+    <p className='md:text-[20px] text-[16px]'>@youthmovementCA</p>
     <Button bgColor="bg-[#484A5C]" text="Pay using Debit card"/>
 </div>
-<div className='flex flex-col  w-[25%] items-center justify-center gap-4'>
-    <img src="/paypal-image.svg" alt="" />
-    <h2 style={{fontFamily: 'Clash Display', fontWeight: 500}} className='text-[32px]'>Paypal</h2>
-    <p className='text-[20px]'>@youthmovementCA</p>
+<div className='flex flex-col md:w-[25%] md:mt-0 mt-20 items-center justify-center gap-4'>
+    <img className='md:w-[83%] w-[80%]' src="/paypal-image.svg" alt="" />
+    <h2 style={{fontFamily: 'Clash Display', fontWeight: 500}} className='md:text-[32px] text-[24px]'>Paypal</h2>
+    <p className='md:text-[20px] text-[16px]'>@youthmovementCA</p>
     <Button bgColor="bg-[#484A5C]" text="Pay using Paypal"/>
 </div>
-<div className='flex flex-col  w-[25%] items-center justify-center gap-4'>
-    <img src="/venomo-image.png" alt="" />
-    <h2 style={{fontFamily: 'Clash Display', fontWeight: 500}} className='text-[32px]'>Venomod</h2>
-    <p className='text-[20px]'>@youthmovementCA</p>
+<div className='flex flex-col md:w-[25%] md:mt-0 mt-20 items-center justify-center gap-4'>
+    <img  className='md:w-[83%] w-[80%]' src="/venomo-image.png" alt="" />
+    <h2 style={{fontFamily: 'Clash Display', fontWeight: 500}} className='md:text-[32px] text-[24px]'>Venomod</h2>
+    <p className='md:text-[20px] text-[16px]'>@youthmovementCA</p>
     <Button bgColor="bg-[#484A5C]" text="Pay using Venomo"/>
 </div>
       </div>

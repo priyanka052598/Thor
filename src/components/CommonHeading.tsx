@@ -17,7 +17,7 @@ function CommonHeading({ text,bottomcolor }: HeadingProps) {
           fontFamily: 'Clash Display',
           fontWeight: 500,
         }}
-        className="md:text-[65px] w-fit text-[24px]  text-black text-center"
+        className="md:text-[60px] md:w-[100%] w-[73%] text-[22px]  text-black text-center"
       >
         {text}
       </h2>

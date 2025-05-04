@@ -22,10 +22,10 @@ function Header() {
   const isActive = (paths: string[]) => paths.includes(location.pathname);
 console.log("location.pathname",location.pathname,isActive)
   return (
-    <div className="flex justify-between md:mx-[80px] items-center px-6 py-4 relative z-50
+    <div className="flex justify-between md:mx-[80px] items-center md:px-6 md:py-4 relative z-50
                     bg-transparent md:bg-transparent ">
       {/* Logo */}
-      <div>
+      <div className='md:block hidden'>
         <img className="w-[75px]" src="/logo-1.svg" alt="Logo" />
       </div>
 
@@ -60,13 +60,17 @@ console.log("isActive(tab.paths)",isActive(tab.paths))
       </div>
 
       {/* Hamburger icon (mobile only) */}
-     
-      <button
-        className="md:hidden bg-white rounded-full p-2 text-black text-3xl"
+     <div className=' md:hidden flex justify-between items-center px-4 w-full  h-[60px] bg-white '>
+     <img className="w-[50px]" src="/logo-1.svg" alt="Logo" />
+
+     <button
+        className="md:hidden bg-[#6D718A] rounded-full p-[5px] text-white text-2xl"
         onClick={() => setSidebarOpen(true)}
       >
         <HiOutlineMenu />
       </button>
+     </div>
+     
 
       {/* Sidebar */}
       {sidebarOpen && (

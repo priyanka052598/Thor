@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Textarea } from "@/components/ui/textarea"
 import { Input } from "@/components/ui/input"
 import Button from './Button'
@@ -21,6 +21,16 @@ function ContactUsComponent({ heading = "Contact Us" }) {
     message: '',
   });
   const [showPopup, setShowPopup] = useState(false); // 👈 popup state
+
+  // ⏱️ Auto-hide popup after 3 seconds
+  useEffect(() => {
+    if (showPopup) {
+      const timer = setTimeout(() => {
+        setShowPopup(false);
+      }, 3000);
+      return () => clearTimeout(timer); // cleanup
+    }
+  }, [showPopup]);
 
   const handleChange = (field: string, value: string) => {
     setFormData({ ...formData, [field]: value });
@@ -61,18 +71,18 @@ function ContactUsComponent({ heading = "Contact Us" }) {
   return (
     <div>
 
-      <div className='flex md:mx-[100px] mx-[20px] mt-[200px] md:h-[700px] overflow-hidden mb-[130px] border-[2px] border-[#484A5C] border-b-[12px] rounded-[24px]'>
+      <div className='flex md:mx-[100px] bg-red-300 mx-[20px] md:my-[200px] my-[100px] md:h-[700px] overflow-hidden  border-[2px] border-[#484A5C] border-b-[12px] rounded-[24px]'>
         <img className='md:w-[50%] sm:block hidden h-full object-cover' src="/contact-us.svg" alt="" />
         {
           showPopup ?
-          <div className=' w-full bg-[#F4E5FF] flex justify-center items-center '>
+          <div className=' md:w-[50%] w-full bg-[#F4E5FF] flex justify-center items-center '>
      <PopUp  />
           </div>
      
 :
 <div className='flex flex-col gap-[15px] md:px-[40px] px-[15px] md:py-[15px] py-[30px] bg-[#F4E5FF] md:w-[50%]'>
 <div className='flex flex-col'>
-  <h3 style={{ fontFamily: 'Clash Display', fontWeight: 500 }} className='md:text-[40px] text-[28px]'>
+  <h3 style={{ fontFamily: 'Clash Display', fontWeight: 500 }} className='md:text-[40px] text-[24px]'>
     {heading}
   </h3>
   <img className='w-[50%]' src="/line-1.svg" alt="" />

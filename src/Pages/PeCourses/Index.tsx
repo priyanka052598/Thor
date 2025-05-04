@@ -33,21 +33,27 @@ function PeCourses() {
     <div>
     <div>
   <div className="relative w-full">
-    {/* Background Image */}
-    <img
-      src="/pe-courses-image.svg"
-      alt="Background"
-      className="w-full h-auto object-cover" 
-    />
+  <img
+    src="/pe-courses-image.svg"
+    alt="Background Desktop"
+    className="hidden md:block w-full h-auto object-cover"
+  />
+
+  {/* Background Image for Mobile */}
+  <img
+    src="/sm-pe-course-image.png"
+    alt="Background Mobile"
+    className="block md:hidden w-full h-auto pb-10 object-cover"
+  />
 
     {/* Absolute Content over Image */}
-    <div className="absolute inset-0">
+    <div className="absolute 0 inset-0">
       <Header /> 
 
       {/* Center Text */}
-      <div className="flex flex-col items-center justify-center gap-[26px] pt-10">
+      <div className="flex flex-col items-center pt-7 justify-center gap-[26px] md:pt-10">
         <span
-          className="text-[60px] text-white text-center leading-[1.4]"
+          className="md:text-[60px] text-[30px] text-white text-center leading-[1.4]"
           style={{
             fontFamily: 'Clash Display',
             fontWeight: 500
@@ -59,7 +65,7 @@ function PeCourses() {
       </div>
       </div>
       </div>
-      <div className="md:mx-[100px] mx-[20px] my-40 flex flex-col gap-[40px]">
+      <div className="md:mx-[100px] mx-[20px] md:my-40 my-20 flex flex-col gap-[40px]">
   {courses.map((course) => (
     <div
       key={course.id}

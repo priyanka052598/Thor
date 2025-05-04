@@ -25,7 +25,7 @@ function Button({
   return (
     <button
       onClick={onClick}
-      className={`flex  items-center cursor-pointer justify-center gap-2 w-fit px-6 py-3 rounded-[8px] font-semibold ${bgColor} ${textColor} ${textSize}`}
+      className={`flex  items-center cursor-pointer justify-center gap-2 w-fit px-6 md:py-3 py-2 rounded-[8px] font-semibold ${bgColor} ${textColor} ${textSize}`}
       style={{
         borderWidth: borderWidth,
         borderColor: borderColor,

@@ -77,9 +77,9 @@ function Footer() {
       </div>
       </div>
       <div className='w-full h-[1px] mt-12 mb-8 bg-white'></div>
-    <div className='md:px-[100px] pl-[15px]  md:text-[18px] text-[16px] pb-5 md:flex flex-col md:justify-between text-white'>
+    <div className='md:px-[100px] pl-[15px]  md:text-[18px] text-[16px] pb-4 md:flex md:flex-row  flex-col justify-between text-white'>
       <span>Copyright & Branding Info: “©️ 2025 YOUTH MOVEMENT</span>
-      <span className=''>All Rights Reserved</span>
+      <div className='md:mt-0 mt-3'>All Rights Reserved</div>
     </div>
     </div>
   )

@@ -21,14 +21,14 @@ const data = [
 
 export default function Chart() {
   return (
-    <Card className="rounded-[24px] p-6 ">
+    <Card className="rounded-[24px] md:p-6 ">
       <CardContent>
-        <h2 className="text-2xl font-semibold mb-6">Student’s Age Details</h2>
+        <h2 className="md:text-2xl text-[18px] font-semibold mb-6">Student’s Age Details</h2>
         <div className="w-full h-[350px]">
           <ResponsiveContainer width="100%" height="100%">
             <BarChart data={data}>
-              <XAxis className="mt-3" dataKey="age" label={{ value: "Student's Age", position: "insideBottom", offset: -1 }} />
-              <YAxis label={{ value: "No. of Students", angle: -90, position: "insideLeft", offset: -1}} />
+              <XAxis className="mt-3" dataKey="age" label={{ value: "Student's Age", position: "insideBottom", offset: -3 }} />
+              <YAxis label={{ value: "No. of Students", angle: -90, position: "insideLeft", offset: 2}} />
               <Tooltip
                 contentStyle={{
                   backgroundColor: "#3f4254",

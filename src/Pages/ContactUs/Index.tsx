@@ -17,7 +17,12 @@ function ContactUs() {
     <img
       src="/contact-us-image.svg"
       alt="Background"
-      className="w-full h-auto object-cover" 
+      className="w-full md:block hidden h-auto object-cover" 
+    />
+    <img
+      src="/sm-contact-us.png"
+      alt="Background"
+      className="w-full md:hidden block h-auto object-cover" 
     />
 
     {/* Absolute Content over Image */}
@@ -25,9 +30,9 @@ function ContactUs() {
       <Header /> 
 
       {/* Center Text */}
-      <div className="flex flex-col items-center justify-center gap-[26px] pt-10">
+      <div className="flex flex-col items-center justify-center gap-[26px] md:pt-10 pt-5">
         <span
-          className="text-[60px] text-white text-center leading-[1.4]"
+          className="md:text-[60px] text-[30px] text-white text-center leading-[1.4]"
           style={{
             fontFamily: 'Clash Display',
             fontWeight: 500
@@ -42,50 +47,68 @@ function ContactUs() {
 
        <ContactUsComponent heading='Send your message.'/>
 
-       <div className='flex mx-[100px]  mt-[100px] h-[670px] overflow-hidden mb-[130px] border-[2px] border-[#484A5C] border-b-[12px] rounded-[24px]'>
-        <div className='flex flex-col gap-[25px] p-[50px] bg-[#F4E5FF] w-[50%]'>
-            <div className='flex flex-col gap-3'>
-            <img className='w-[25%]' src="/logo-1.svg" alt="" />
-            <p className='text-[24px] font-medium'>Classes for homeschool, after school,<br/> unschooling students</p>
-            </div>
-            <div className='bg-white rounded-[10px] mt-8  flex justify-start items-center'>
-  <div className='bg-[#FF932F] p-3 rounded-l-[10px] rounded-r-none flex items-center justify-center'>
-    <MdOutlineMail className='text-white' size={38} />
-  </div>
-  <span className='pl-5 text-[18px] py-3'>YouthMovement.CA@gmail.com</span>
-</div>
-            <div className='bg-white rounded-[10px]  flex justify-start items-center'>
-  <div className='bg-[#387CFF] p-3 rounded-l-[10px] rounded-r-none flex items-center justify-center'>
-    <MdPhoneInTalk className='text-white' size={38} />
-  </div>
-  <span className='pl-5 text-[18px] py-3'>(209) 483-9667</span>
-</div>
-            <div className='bg-white rounded-[10px]  flex justify-start items-center'>
-  <div className='bg-[#FF15AF] p-3 rounded-l-[10px] rounded-r-none flex items-center justify-center'>
-    <LuMapPin className='text-white' size={38} />
-  </div>
-  <span className='pl-5 text-[18px] py-3'>343 W. Viento St. Mountain House, CA 95391</span>
-</div>
+       <div className='md:flex md:flex-row flex-col md:mx-[100px] mx-[20px] md:mt-[100px]  md:h-[670px] overflow-hidden mb-[130px] border-[2px] border-[#484A5C] border-b-[12px] rounded-[24px]'>
+  {/* Left Side */}
+  <div className='flex flex-col gap-[25px] md:p-[50px] p-[15px] bg-[#F4E5FF] md:w-[50%]'>
+    
+    {/* Logo and Text */}
+    <div className='flex flex-col md:gap-3'>
+      <img className='md:w-[25%] w-[35%]' src="/logo-1.svg" alt="Logo" />
+      <p className='md:text-[24px] text-[16px] font-medium'>
+        Classes for homeschool, after school,<br />
+        unschooling students
+      </p>
+    </div>
 
-     
-        </div>
-        <div 
-  className='relative w-[50%] h-full' 
-  style={{
-    background: 'radial-gradient(circle, #D033EA 0%, #831994 100%)'
-  }}
->
-  <img className='w-full h-full object-cover' src="/youth-movement-girl-image.svg" alt="" />
-</div>
-
-
+    {/* Email */}
+    <div className='bg-white rounded-[10px] md:mt-8  mt-4 flex items-center'>
+      <div className='bg-[#FF932F] p-2 md:p-3 rounded-l-[10px] flex items-center justify-center'>
+        <MdOutlineMail className='text-white text-[18px] md:text-[38px]' />
       </div>
+      <span className='pl-2 md:pl-5 text-[13px] md:text-[18px] py-[8px] md:py-3'>
+        YouthMovement.CA@gmail.com
+      </span>
+    </div>
+
+    {/* Phone */}
+    <div className='bg-white rounded-[10px] flex items-center'>
+      <div className='bg-[#387CFF] p-2 md:p-3 rounded-l-[10px] flex items-center justify-center'>
+        <MdPhoneInTalk className='text-white text-[18px] md:text-[38px]' />
+      </div>
+      <span className='pl-2 md:pl-5 text-[13px] md:text-[18px] py-[8px] md:py-3'>
+        (209) 483-9667
+      </span>
+    </div>
+
+    {/* Location */}
+    <div className='bg-white rounded-[10px] flex items-center'>
+      <div className='bg-[#FF15AF] p-2 md:p-3 rounded-l-[10px] flex items-center justify-center'>
+        <LuMapPin className='text-white text-[18px] md:text-[38px]' />
+      </div>
+      <span className='pl-2 md:pl-5 text-[13px] md:text-[18px] py-[8px] md:py-3'>
+        343 W. Viento St. Mountain House, CA 95391
+      </span>
+    </div>
+
+  </div>
+
+  {/* Right Side Image */}
+  <div
+    className='relative md:w-[50%] h-full'
+    style={{
+      background: 'radial-gradient(circle, #D033EA 0%, #831994 100%)'
+    }}
+  >
+    <img className='w-full h-full object-cover' src="/youth-movement-girl-image.svg" alt="Youth Movement" />
+  </div>
+</div>
+
        
 
 
-       <div className='px-[100px] text-[18px]  bg-[#4177C7] py-7 flex justify-between text-white'>
-      <span>Copyright & Branding Info: “©️ 2025 YOUTH MOVEMENT</span>
-      <span>All Rights Reserved</span>
+       <div className='md:px-[100px] px-[20px] md:text-[18px]  text-[16px] bg-[#4177C7] py-7  md:flex md:flex-row flex-col justify-between text-white'>
+      <div>Copyright & Branding Info: “©️ 2025 YOUTH MOVEMENT</div>
+      <div className='md:pt-0 pt-3'>All Rights Reserved</div>
     </div>
     </div>
   )

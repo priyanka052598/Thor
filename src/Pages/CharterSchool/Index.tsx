@@ -69,7 +69,12 @@ function CharterSchool() {
     <img
       src="/Charter-school-main-image.svg"
       alt="Background"
-      className="w-full h-auto object-cover" 
+      className="w-full md:block hidden h-auto object-cover" 
+    />
+    <img
+      src="/sm-charter-school-image.png"
+      alt="Background"
+      className="w-full md:hidden block h-auto object-cover" 
     />
 
     {/* Absolute Content over Image */}
@@ -78,11 +83,11 @@ function CharterSchool() {
 
       {/* Center Text */}
 
-      <div className="flex flex-col items-center justify-center gap-[39px] pt-10">
+      <div className="flex flex-col items-center mx-[12px] justify-center md:gap-[39px] gap-[20px] pt-10">
         <div className='flex flex-col justify-center items-center'>
-        <span className='bg-[#5E0C4B] px-5 py-1 rounded-3xl text-[22px] text-white w-fit'>Trusted by 30 +</span>
+        <span className='bg-[#5E0C4B] px-5 py-1 rounded-3xl md:text-[22px] text-[12px] text-white w-fit'>Trusted by 30 +</span>
         <span
-          className="text-[60px] text-white text-center leading-[1.4]"
+          className="md:text-[60px] text-[30px] text-white text-center leading-[1.4]"
           style={{
             fontFamily: 'Clash Display',
             fontWeight: 500
@@ -92,7 +97,7 @@ function CharterSchool() {
         </span>
         </div>
       
-        <span className='text-[24px] text-white'>Adding more Charter Schools throughout the school year. </span>
+        <span className='md:text-[24px] text-[16px] text-center text-white'>Adding more Charter Schools throughout the school year. </span>
         {/* buttons */}
         <div className='flex gap-[40px]'>
 <Button onClick={handleContactClick} text="Contact us" bgColor="bg-white" textColor="text-black"  showArrow={true} />
@@ -101,13 +106,13 @@ function CharterSchool() {
     </div>
     </div>
     {/* Logo cards section */}
-    <div className="flex flex-wrap gap-[40px] justify-center mb-[140px] my-[80px] px-[50px]">
+    <div className="flex flex-wrap md:gap-[40px] gap-[24px] justify-center mb-[140px] my-[80px] md:px-[50px] px-[20px]">
   {trustedSchools.map((school, index) => (
-    <div key={index} className="w-[20%]  flex flex-col items-center">
+    <div key={index} className="md:w-[20%] w-[45%]  flex flex-col items-center">
       <div className="bg-white w-full rounded-[16px] border-[1px] border-[#484A5C] border-b-[12px] p-6">
         <img src={school.logo} alt={school.name} className="w-full h-auto object-contain" />
       </div>
-      <p className="text-[22px] text-center font-medium mt-4">{school.name}</p>
+      <p className="md:text-[22px] text-[16px] text-center font-medium mt-4">{school.name}</p>
     </div>
   ))}
 </div>

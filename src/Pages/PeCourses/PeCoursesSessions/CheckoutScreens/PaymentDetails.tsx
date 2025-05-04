@@ -1,17 +1,44 @@
 import Header from '@/components/Header'
 import React, { useState } from 'react'
 import { FaCheck } from 'react-icons/fa6';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion";
 import { ChevronDown } from 'lucide-react';
-import Button from '@/components/Button';
 import { FaCreditCard } from "react-icons/fa";
+import { Button as Btn } from "@/components/ui/button"
+import { Button } from '@/components/ui/button';
 
+
+const RequestSubmittedPopUp = ({  onClose,navigate }: {  onClose: () => void,navigate:any }) => {
+
+  return (
+    <div className="fixed inset-0 bg-black/30 backdrop-blur-[2px] bg-opacity- flex justify-center items-center z-50">
+      <div className="bg-white  rounded-[16px] overflow-hidden w-[400px] flex flex-col items-center gap-4">
+      <div className="relative w-fit">
+  <img className="w-full" src="/request-submitted-image.png" alt="" />
+
+  <h3 style={{ fontFamily: 'Clash Display', fontWeight: 500 }} className="absolute inset-0 flex justify-center pt-10 text-white text-[26px] font-semibold z-10">
+    You're all set for Class!
+  </h3>
+</div>
+
+        <p className="text-[16px] leading-[1.4] px-8 text-center"> We're excited to have you in the session. You can check the status of your request anytime by visiting your profile.</p>
+     <div className='w-full flex justify-center items-center gap-4 mt-6  px-8 pb-10 '>
+      <Btn   className='bg-[#484A5C] text-white  border-[1px] py-5 w-full cursor-pointer ' onClick={()=>{navigate("/")}}>Okay</Btn>
+     </div>
+
+      </div>
+    </div>
+  )
+}
 
 
 function PaymentDetails() {
     const {from} = useLocation().state || {from: ""};
     const [selectedMethod, setSelectedMethod] = useState('');
+const navigate = useNavigate();
+
+const [showPopup, setShowPopup] = useState(false);
 
 
   return (
@@ -264,6 +291,23 @@ function PaymentDetails() {
 
 
             </div>
+            <div className='my-5 flex flex-col mt-[150px] gap-4'>
+        <div className='  w-full h-[1px] bg-[#808080]'/>
+        <div  className='flex gap-[10px] text-[18px] justify-end  mr-[100px]' >
+        <Button onClick={() => navigate(-1)} className='px-6 py-4 cursor-pointer' variant="outline">Back</Button>     
+        {from=="Independent" &&
+         <Button     
+         onClick={() => setShowPopup(true)}       
+ className='bg-[#484A5C] text-white px-6 py-5 coursor-pointer'>Proceed to payment</Button>}
+        {from=="Charter" && <Button  onClick={() => setShowPopup(true)} className='bg-[#484A5C] text-white px-6 py-5 cursor-pointer'>Enroll In the Class</Button>}
+        {/* when Proceed to paayment -checkout component */}
+       
+        </div>
+        {showPopup && <RequestSubmittedPopUp     navigate={navigate} 
+  onClose={() => setShowPopup(false)} />}
+
+
+      </div>
             </div>
   )
 }

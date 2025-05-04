@@ -18,11 +18,39 @@ import ContactUsComponent from '@/components/ContactUsComponent';
 import ProfileUi from '@/components/ProfileUi';
 
 
-
-
+import { Card, CardContent } from "@/components/ui/card"
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+  type CarouselApi,
+} from "@/components/ui/carousel"
+ 
 
 
 function Home() {
+
+  
+  // const [api, setApi] = React.useState<CarouselApi>()
+  // const [current, setCurrent] = React.useState(0)
+  // const [count, setCount] = React.useState(0)
+ 
+  // React.useEffect(() => {
+  //   if (!api) {
+  //     return
+  //   }
+ 
+  //   setCount(api.scrollSnapList().length)
+  //   setCurrent(api.selectedScrollSnap() + 1)
+ 
+  //   api.on("select", () => {
+  //     setCurrent(api.selectedScrollSnap() + 1)
+  //   })
+  // }, [api])
+
+
 
   const cards = [
     {
@@ -163,6 +191,13 @@ function Home() {
       profile: <ProfileUi />
     },
   ];
+
+  const carouselData = [
+    { image:"testimonial-image-1.svg" ,name: "Thomas Miller", description: "Youth Movement has been a game-changer for my child! The combination of physical education and academic classes keeps them engaged and motivated." },
+    { image:"testimonial-image-2.svg" ,name: "Jessica Brown", description: "I love how easy it is to enroll and track my child’s progress. The platform is seamless, and the classes are well-structured. My son has improved both academically and physically. " },
+    { image:"testimonial-image-1.svg" ,name: "John Smith", description: "Youth Movement has been a game-changer for my child! The combination of physical education and academic classes keeps them engaged and motivated." },
+
+  ];
   
   return (
     <div>
@@ -187,7 +222,7 @@ function Home() {
         <Header /> 
 
         {/* Center Text */}
-        <div className="flex flex-col items-center justify-center gap-[26px] md:pt-10 pt-2">
+        <div className="flex flex-col items-center justify-center gap-[26px] md:pt-10 pt-6">
           <span
             className="md:text-[60px] text-[22px] text-white text-center leading-[1.4]"
             style={{
@@ -198,7 +233,7 @@ function Home() {
             Engaging Physical & Academic <br /> Classes, All in One Place!
           </span>
           {/* buttons */}
-          <div className='md:flex justify-center items-center  md:gap-[40px] sm:gap-[10px]'>
+          <div className='flex flex-col md:flex-row justify-center items-center     md:gap-[40px] gap-[10px]'>
 <Button text="Explore Courses" bgColor="bg-transparent" textColor="text-white"  showArrow={true} />
 <Button text="Enroll Now" bgColor="bg-white" textColor="text-black" showArrow={true} />
           </div>
@@ -238,7 +273,7 @@ function Home() {
 <div className='md:my-[160px] my-[80px]'>
 <CommonHeading  bottomcolor='blue' text="What We Do Offer"/>
   {/* Cards  */}
-  <div className="flex justify-center flex-wrap md:mx-0 mx-[20px] gap-[80px] md:mt-[80px] mt-[40px]">
+  <div className="flex justify-center flex-wrap md:mx-0 mx-[20px] md:gap-[80px] gap-[40px] md:mt-[80px] mt-[40px]">
         {cards.map((card) => (
           <div
             key={card.id}
@@ -254,7 +289,7 @@ function Home() {
             </div>
 
             {/* Text and Button */}
-            <div className="md:px-[35px] px-[15px] md:py-[15px] py-[30px] flex flex-col justify-between md:gap-[10px]">
+            <div className="md:px-[35px] px-[15px] md:py-[15px] py-[20px] md:mb-0 mb-5 flex flex-col justify-between md:gap-[10px]">
               <h3
                 style={{
                   fontFamily: 'Clash Display',
@@ -299,13 +334,13 @@ function Home() {
 </div>
 {/* About us */}
 <div className='md:my-[160px] my-[80px] w-[88%] mx-auto  overflow-hidden border-[2px] border-[#484A5C] border-b-[12px] rounded-[16px] flex'>
-<div className='md:w-[50%] px-[30px] py-[50px]   bg-[#4177C7]'>
+<div className='md:w-[50%] md:px-[30px] px-[10px] py-[50px]   bg-[#4177C7]'>
   <h3 style={{
     fontFamily: 'Clash Display',
     fontWeight: 500
   }} className='text-white md:text-[56px] text-[28px] '>About Us</h3>
   <img className='w-[40%]  mb-5' src="/line-2.svg" alt="" />
-  <p className='md:text-[24px] text-white'>
+  <p className='md:text-[24px] text-[16px] text-white'>
   Youth Movement is a dynamic initiative dedicated to empowering young minds through a perfect blend of physical education and academic excellence. We aim to create a nurturing environment where children grow stronger, smarter, and more confident—both inside and outside the classroom. With a team of experienced instructors and a values-driven approach, we are committed to shaping the next generation with purpose, discipline, and holistic growth.
   </p>
 </div>
@@ -314,7 +349,7 @@ function Home() {
 {/* Meet our Instructors */}
 <div>
   <CommonHeading bottomcolor='blue' text="Meet Our Instructors"/>
-  <div className='flex flex-wrap w-full  justify-center items-center mt-[60px] md:gap-[70px] gap-[40px]' >
+  <div className='flex flex-wrap w-full  justify-center items-center md:mt-[60px] mt-[40px] md:gap-[70px] gap-[40px]' >
   {instructors.map((instructor, index) => (
     <div key={index} className='flex flex-wrap flex-col justify-center items-center md:gap-[30px] gap-[20px]'>
       <div className=''>
@@ -343,7 +378,7 @@ function Home() {
   }}>
 
 
-<div  className='flex justify-between  items-center w-[90%] py-[40px] mx-auto my-[160px]'>
+<div  className='flex justify-between  items-center w-[90%] py-[40px] mx-auto md:my-[160px] my-[80px]'>
   <img className='w-[45%] sm:block hidden' src="/youth-movement-girl-image.svg" alt="" />
   <div className='md:w-[50%] flex flex-col gap-[25px]'>
     <h3 style={{
@@ -369,9 +404,9 @@ function Home() {
 </div>
 
 {/* Parent Testimonials */}
-<div>
+<div className='md:block hidden '>
   <CommonHeading bottomcolor='blue' text="Parent Testimonials" />
-  {/* <div className='mx-[100px]  mt-[80px]  flex justify-around items-center border-[2px] border-[#484A5C] border-b-[12px] rounded-[16px]'>
+  <div className='mx-[100px]  mt-[80px]  flex justify-around items-center border-[2px] border-[#484A5C] border-b-[12px] rounded-[16px]'>
     {testinomial.map((item,index) => (
       <div className={`md:w-[31%] flex flex-col h-[100%] ${ index<2 && "border-r-[2px]" } border-[#484A5C] justify-between p-[30px] gap-[30px]`} key={item.id}>
         <img className='w-[22%]' src={item.image} alt={item.name} />
@@ -383,15 +418,50 @@ function Home() {
       </div>
     ))}
   </div>
-  <img className='w-full ' src="/parent-testimonial-bottom-image.svg" alt="" /> */}
+  <img className='w-full ' src="/parent-testimonial-bottom-image.svg" alt="" />
 </div>
+<div className='md:hidden block'>
+<CommonHeading bottomcolor='blue' text="Parent Testimonials" />
+
+<div className='w-[70%] mx-auto mt-[40px] '>
+
+
+<Carousel>
+  <CarouselContent>
+    {carouselData.map((item, index) => (
+      <CarouselItem key={index}>
+        <div className="p-1">
+          <Card className='border-[2px] py-8 border-[#484A5C] border-b-[12px] rounded-[16px]'>
+            <CardContent className="flex aspect-square items-center justify-center  px-3 text-center">
+              
+              <div className='flex flex-col gap-[20px] '>
+                <img className='w-[50px]' src={item.image} alt="" />
+                <p className='text-[14px] text-left'>{item.description}</p>
+                <h2 style={{fontFamily: 'Clash Display', fontWeight: 500}} className='text-[22px] text-left'>{item.name}</h2>
+                
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </CarouselItem>
+    ))}
+  </CarouselContent>
+  <CarouselPrevious />
+  <CarouselNext />
+</Carousel>
+
+
+    </div>
+    <img className='w-full ' src="/sm-parent-testimonial-bootom-image.png" alt="" />
+    </div>
+
 
 {/* All you need to know - FAQS */}
-<div className='md:m-[100px] mx-[20px]  '>
+<div className='md:m-[100px] mx-[20px] md:my-[120px] my-[80px] '>
   <h3 style={{
     fontFamily: 'Clash Display',
     fontWeight: 500
-  }} className='md:text-[56px] text-[28px] my-[30px]'>All you need to know - FAQS</h3>
+  }} className='md:text-[56px] text-[26px] md:my-[30px] my-[20px]'>All you need to know - FAQS</h3>
 <Accordion className="border-[2px] border-[#484A5C] rounded-[20px] border-b-[12px] md:px-[30px] px-[10px] py-[20px]" type="single" collapsible>
   {faq.map(({ id, question, answer }) => (
     <AccordionItem key={id} value={`item-${id}`}>
@@ -424,11 +494,11 @@ function Home() {
 
 </div>
 {/* Ready to give your child a head start? */}
-<div className="md:bg-[url('/head-start-image.svg')] bg-[url('/sm-head-start-image.png')] bg-cover bg-center md:mt-0 mt-[50px] rounded-[24px] mx-[20px] md:mx-[100px] md:w-[86%] w-[90%] h-[400px]  md:pt-0 pt-7    md:py-[100px] flex md:items-center justify-center">
+<div className="md:bg-[url('/head-start-image.svg')] bg-[url('/sm-head-start-image.png')] bg-cover bg-center md:mt-0 mt-[50px] rounded-[24px] mx-[20px] md:mx-[100px] md:w-[86%] w-[90%] h-[400px]  md:pt-0 pt-7    md:py-[100px]  flex md:items-center justify-center">
   <span style={{
     fontFamily: 'Clash Display',
     fontWeight: 500
-  }} className="md:text-[56px]  text-[32px] text-white text-center md:w-[58%] w-full leading-[1.3] mx-auto">
+  }} className="md:text-[56px]  text-[27px] text-white text-center md:w-[58%] w-full leading-[1.3] mx-auto">
     Ready to give your child a head start?
   </span>
 </div>

@@ -37,7 +37,12 @@ function AcademicCourses() {
     <img
       src="/pe-courses-image.svg"
       alt="Background"
-      className="w-full h-auto object-cover" 
+      className="w-full md:block hidden h-auto object-cover" 
+    />
+    <img
+      src="/sm-academic-courses-image.png"
+      alt="Background"
+      className="w-full md:hidden block h-auto object-cover" 
     />
 
     {/* Absolute Content over Image */}
@@ -45,15 +50,15 @@ function AcademicCourses() {
       <Header /> 
 
       {/* Center Text */}
-      <div className="flex flex-col items-center justify-center gap-[26px] pt-10">
+      <div className="flex flex-col items-center justify-center gap-[26px] md:pt-10 pt-6">
         <span
-          className="text-[60px] text-white text-center leading-[1.4]"
+          className="md:text-[60px] text-[30px] text-white text-center leading-[1.4]"
           style={{
             fontFamily: 'Clash Display',
             fontWeight: 500
           }}
         >
-        P.E Courses
+    Academic Courses
         </span>
         
       </div>

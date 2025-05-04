@@ -26,10 +26,10 @@ const RequestSubmittedPopUp = ({  onClose,navigate }: {  onClose: () => void,nav
   return (
     <div className="fixed inset-0 bg-black/30 backdrop-blur-[2px] bg-opacity- flex justify-center items-center z-50">
       <div className="bg-white  rounded-[16px] overflow-hidden w-[400px] flex flex-col items-center gap-4">
-        <img className='' src="/request-submitted.png" alt="" />
+        <img className='' src="/request-submitted-image.svg" alt="" />
         <p className="text-[16px] leading-[1.4] px-8 text-center"> We're excited to have you in the session. You can check the status of your request anytime by visiting your profile.</p>
      <div className='w-full flex justify-center items-center gap-4 mt-6  px-8 pb-10 '>
-      <Btn   className='bg-[#484A5C] text-white  border-[1px] py-5 w-full ' onClick={()=>{navigate("/")}}>Okay</Btn>
+      <Btn   className='bg-[#484A5C] text-white  border-[1px] py-5 w-full cursor-pointer ' onClick={()=>{navigate("/")}}>Okay</Btn>
      </div>
 
       </div>
@@ -54,21 +54,215 @@ const [parentName, setParentName] = useState('');
 const [parentEmail, setParentEmail] = useState('');
 const [parentPhone, setParentPhone] = useState('');
 const [showPopup, setShowPopup] = useState(false);
-const [students, setStudents] = useState(['Mohit Asani']);
+const [students, setStudents] = useState([
+  {
+    id: 1,
+    name: "Mohit Asani",
+    displayName: "Mohit Asani", // For display in the student tags
+    school: "",
+    age: "",
+    gender: "",
+    joinDate: ""
+  }
+]);
+const [activeStudentId, setActiveStudentId] = useState(1);
 const {from} = useLocation().state || {from: ""};
 
 console.log(from,"from")
 
 const addStudent = () => {
-  const newNumber = students.length + 1;
-  setStudents([...students, `Student ${newNumber}`]);
+  const newId = students.length + 1;
+  const newStudent = {
+    id: newId,
+    name: "",
+    displayName: `Student ${newId}`, // Default display name
+    school: "",
+    age: "",
+    gender: "",
+    joinDate: ""
+  };
+  
+  setStudents([...students, newStudent]);
+  // Automatically switch to the new student's form
+  setActiveStudentId(newId);
 };
 
 const removeLastStudent = () => {
   if (students.length > 1) {
-    setStudents(students.slice(0, -1));
+    const newStudents = students.slice(0, -1);
+    setStudents(newStudents);
+    
+    // If the removed student was active, switch to the last remaining student
+    if (activeStudentId === students[students.length - 1].id) {
+      setActiveStudentId(newStudents[newStudents.length - 1].id);
+    }
   }
 };
+
+const updateStudentData = (id:any, field:any, value:any) => {
+  setStudents(
+    students.map(student => {
+      if (student.id === id) {
+        // If updating name, also update displayName
+        if (field === 'name' && value) {
+          return { ...student, [field]: value, displayName: value };
+        }
+        return { ...student, [field]: value };
+      }
+      return student;
+    })
+  );
+};
+
+
+
+
+const activeStudent = students.find(student => student.id === activeStudentId) || students[0];
+const renderStudentDetailsSection = () => (
+  <div className='Student Details'>
+    <Accordion type="single" defaultValue="session" collapsible className="border-[1px] px-5 py-[4px] border-[#484A5C] border-b-[12px] rounded-[16px]">
+      <AccordionItem value="session">
+        <AccordionTrigger
+          style={{ fontFamily: 'Clash Display', fontWeight: 500 }}
+          className="text-[32px] hover:no-underline flex justify-between items-center group"
+        >
+          <span>Student Details</span>
+          <ChevronDown className="h-8 w-8 transition-transform duration-300 group-data-[state=open]:rotate-180" />
+        </AccordionTrigger>
+
+        <AccordionContent className='flex flex-col gap-[20px]'>
+          {/* Joining Date - Common for all */}
+          <div>
+            <h2 className='text-[16px]'>Joining Date *</h2>
+            <input 
+              className='w-full px-3 py-[8px] border-[1px] border-[#484A5C] rounded-[8px]' 
+              type="date" 
+              value={activeStudent.joinDate}
+              onChange={(e) => updateStudentData(activeStudentId, 'joinDate', e.target.value)}
+            />
+          </div>
+
+          {/* Students Tags Section */}
+          <div>
+            <div className='flex justify-between items-center'>
+              <div className='flex flex-wrap gap-[12px] items-center'>
+                {students.map((student) => (
+                  <span
+                    key={student.id}
+                    className={`px-5 py-2 text-[18px] cursor-pointer ${activeStudentId === student.id ? 'text-white bg-[#1B69FF]' : 'text-white bg-[#484A5C]'} rounded-[8px]`}
+                    onClick={() => setActiveStudentId(student.id)}
+                  >
+                    {student.displayName}
+                  </span>
+                ))}
+                <AiOutlinePlus
+                  onClick={addStudent}
+                  className='cursor-pointer border-[1px] border-black text-[40px] rounded-[8px] p-1'
+                />
+              </div>
+            </div>
+
+            {/* Radio + Remove Button */}
+            <div className='radio mt-4'>
+              <h2 className='text-[16px] mb-1'>Independent Student</h2>
+              <div className='flex justify-between items-center'>
+                <div className='flex gap-2'>
+                  <input className='w-5 accent-black' type='radio' />
+                  <span>No</span>
+                </div>
+
+                {students.length > 1 && (
+                  <Button
+                    className='px-6 py-3 text-[#EB5757]'
+                    variant='outline'
+                    onClick={removeLastStudent}
+                  >
+                    Remove Student
+                  </Button>
+                )}
+              </div>
+            </div>
+          </div>
+
+          {/* Active Student Form */}
+          <div className="p-4 border border-gray-300 rounded-lg mb-4">
+            <h3 className="text-xl font-medium mb-3">
+              {activeStudent.displayName || `Student ${activeStudent.id}`}
+            </h3>
+            
+            {/* Student Name */}
+            <div className="mb-4">
+              <h2 className='text-[16px]'>Student Name *</h2>
+              <Input 
+                type='text' 
+                placeholder='Enter student name'
+                value={activeStudent.name}
+                onChange={(e) => updateStudentData(activeStudentId, 'name', e.target.value)}
+              />
+            </div>
+            
+            {/* Charter School */}
+            <div className='mb-4'>
+              <h2 className='text-[16px]'>Charter School *</h2>
+              <Select
+                value={activeStudent.school}
+                onValueChange={(value) => updateStudentData(activeStudentId, 'school', value)}
+              >
+                <SelectTrigger className="w-full">
+                  <SelectValue className='text-[18px]' placeholder="Select School" />
+                </SelectTrigger>
+                <SelectContent className='text-[18px] bg-white'>
+                  <SelectItem value="school1">Mountain View School</SelectItem>
+                  <SelectItem value="school2">Valley High School</SelectItem>
+                  <SelectItem value="school3">Riverside Academy</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+            
+            {/* Age & Gender */}
+            <div className='w-full flex justify-center items-center gap-4 mx-auto'>
+              <div className='w-full'>
+                <h2 className='text-[16px]'>Age (Yrs) *</h2>
+                <Select
+                  value={activeStudent.age}
+                  onValueChange={(value) => updateStudentData(activeStudentId, 'age', value)}
+                >
+                  <SelectTrigger className="w-full">
+                    <SelectValue className='text-[18px]' placeholder="Enter age" />
+                  </SelectTrigger>
+                  <SelectContent className='text-[18px] bg-white'>
+                    {Array.from({ length: 18 }, (_, i) => i + 3).map(age => (
+                      <SelectItem key={age} value={age.toString()}>{age}</SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+              
+              <div className='w-full'>
+                <h2 className='text-[16px]'>Gender *</h2>
+                <Select
+                  value={activeStudent.gender}
+                  onValueChange={(value) => updateStudentData(activeStudentId, 'gender', value)}
+                >
+                  <SelectTrigger className="w-full">
+                    <SelectValue className='text-[18px]' placeholder="Select" />
+                  </SelectTrigger>
+                  <SelectContent className='text-[18px] bg-white'>
+                    <SelectItem value="male">Male</SelectItem>
+                    <SelectItem value="female">Female</SelectItem>
+                    <SelectItem value="other">Other</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+            </div>
+          </div>
+        </AccordionContent>
+      </AccordionItem>
+    </Accordion>
+  </div>
+);
+
+
 
 
 const handleSubmit = () => {
@@ -88,7 +282,7 @@ const handleSubmit = () => {
     parentPhone,
   });
 
-  // Show confirmation popup
+  // Show confirmation 
   setShowPopup(true);
 };
 
@@ -538,10 +732,10 @@ const handleProceed = () => {
       <div className='my-5 flex flex-col mt-[150px] gap-4'>
         <div className='  w-full h-[1px] bg-[#808080]'/>
         <div  className='flex gap-[10px] text-[18px] justify-end  mr-[100px]' >
-        <Button className='px-6 py-4' variant="outline">Back</Button>     
+        <Button onClick={() => navigate(-1)} className='px-6 py-4 cursor-pointer' variant="outline">Back</Button>     
         {from=="Independent" && <Button           onClick={handleProceed}
- className='bg-[#484A5C] text-white px-6 py-5'>Proceed to payment</Button>}
-        {from=="Charter" && <Button  onClick={() => setShowPopup(true)} className='bg-[#484A5C] text-white px-6 py-5'>Enroll In the Class</Button>}
+ className='bg-[#484A5C] text-white px-6 py-5 coursor-pointer'>Proceed to payment</Button>}
+        {from=="Charter" && <Button  onClick={() => setShowPopup(true)} className='bg-[#484A5C] text-white px-6 py-5 cursor-pointer'>Enroll In the Class</Button>}
         {/* when Proceed to paayment -checkout component */}
        
         </div>
