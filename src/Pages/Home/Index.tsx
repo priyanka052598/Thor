@@ -234,7 +234,7 @@ function Home() {
       </div>
     </div>
      {/* Video part */}
-     <div className="relative md:mx-1   w-full">
+     <div className="relative md:mx-0   w-full">
   <img
   className="absolute right-0 top-0 md:w-[100%] w-[90%] h-auto object-contain"
     src="/video-part-bg.svg"
@@ -487,7 +487,7 @@ function Home() {
 
 </div>
 {/* Ready to give your child a head start? */}
-<div className="md:bg-[url('/head-start-image.svg')] bg-[url('/sm-head-start-image.png')] bg-cover bg-center md:mt-0 mt-[50px] rounded-[24px] mx-[20px] md:mx-[100px] md:w-[86%] w-[90%] h-[400px]  md:pt-0 pt-7    md:py-[100px]  flex md:items-center justify-center">
+<div className="md:bg-[url('/head-start-image.webp')] bg-[url('/sm-head-start-image.png')] bg-cover bg-center md:mt-0 mt-[50px] rounded-[24px] mx-[20px] md:mx-[100px] md:w-[86%] w-[90%] h-[400px]  md:pt-0 pt-7    md:py-[100px]  flex md:items-center justify-center">
   <span style={{
     fontFamily: 'Clash Display',
     fontWeight: 500
