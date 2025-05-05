@@ -8,7 +8,6 @@ import { AiOutlinePlus } from "react-icons/ai";
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import PhoneInput from 'react-phone-input-2';
-import { Button as Btn } from "@/components/ui/button"
 import { Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { FaCheck } from "react-icons/fa6";
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
@@ -25,15 +24,22 @@ const RequestSubmittedPopUp = ({  onClose,navigate }: {  onClose: () => void,nav
 
   return (
     <div className="fixed inset-0 bg-black/30 backdrop-blur-[2px] bg-opacity- flex justify-center items-center z-50">
-      <div className="bg-white  rounded-[16px] overflow-hidden w-[400px] flex flex-col items-center gap-4">
-        <img className='' src="/request-submitted-image.svg" alt="" />
-        <p className="text-[16px] leading-[1.4] px-8 text-center"> We're excited to have you in the session. You can check the status of your request anytime by visiting your profile.</p>
-     <div className='w-full flex justify-center items-center gap-4 mt-6  px-8 pb-10 '>
-      <Btn   className='bg-[#484A5C] text-white  border-[1px] py-5 w-full cursor-pointer ' onClick={()=>{navigate("/")}}>Okay</Btn>
-     </div>
+    <div className="bg-white  rounded-[16px] overflow-hidden w-[400px] flex flex-col items-center gap-4">
+    <div className="relative w-fit">
+<img className="w-full" src="/request-submitted-image.png" alt="" />
 
-      </div>
+<h3 style={{ fontFamily: 'Clash Display', fontWeight: 500 }} className="absolute inset-0 flex justify-center pt-10 text-white text-[26px] font-semibold z-10">
+  You're all set for Class!
+</h3>
+</div>
+
+      <p className="text-[16px] leading-[1.4] px-8 text-center"> We're excited to have you in the session. You can check the status of your request anytime by visiting your profile.</p>
+   <div className='w-full flex justify-center items-center gap-4 mt-6  px-8 pb-10 '>
+   <button onClick={()=>{navigate("/")}} className='bg-[#484A5C] w-full rounded-[6px] py-2 text-white cursor-pointer' type="button">OKay</button>
+   </div>
+
     </div>
+  </div>
   )
 }
 
@@ -87,13 +93,13 @@ const addStudent = () => {
   setActiveStudentId(newId);
 };
 
-const removeLastStudent = () => {
+const removeLastStudent = (id:any) => {
   if (students.length > 1) {
-    const newStudents = students.slice(0, -1);
+    const newStudents = students.filter(student => student.id !== id);
     setStudents(newStudents);
-    
-    // If the removed student was active, switch to the last remaining student
-    if (activeStudentId === students[students.length - 1].id) {
+
+    // If the removed student was the active one, set the last student as active
+    if (id === activeStudentId) {
       setActiveStudentId(newStudents[newStudents.length - 1].id);
     }
   }
@@ -149,7 +155,7 @@ const renderStudentDetailsSection = () => (
                 {students.map((student) => (
                   <span
                     key={student.id}
-                    className={`px-5 py-2 text-[18px] cursor-pointer ${activeStudentId === student.id ? 'text-white bg-[#1B69FF]' : 'text-white bg-[#484A5C]'} rounded-[8px]`}
+                    className={`px-5 py-2 text-[18px] cursor-pointer ${activeStudentId === student.id ? 'text-white bg-[#484A5C]' : 'text-black border-[1px] border-[#484A5C]'} rounded-[8px]`}
                     onClick={() => setActiveStudentId(student.id)}
                   >
                     {student.displayName}
@@ -175,7 +181,9 @@ const renderStudentDetailsSection = () => (
                   <Button
                     className='px-6 py-3 text-[#EB5757]'
                     variant='outline'
-                    onClick={removeLastStudent}
+                    onClick={()=>{
+                      removeLastStudent(activeStudentId);
+                    }}
                   >
                     Remove Student
                   </Button>
@@ -441,129 +449,9 @@ const handleProceed = () => {
     </Accordion>
       </div>
 <div className='Student Details'>
-   <Accordion type="single"  collapsible className="  border-[1px] px-5 py-[4px] border-[#484A5C] border-b-[12px]  rounded-[16px]">
-      <AccordionItem value="session">
-      <AccordionTrigger
-  style={{ fontFamily: 'Clash Display', fontWeight: 500 }}
-  className="text-[32px] hover:no-underline flex justify-between items-center group "
->
-  <span>Student Details</span>
-  
-  {/* Custom ChevronDown Icon */}
-  
-              <ChevronDown className="h-8 w-8 transition-transform duration-300 group-data-[state=open]:rotate-180" />
-</AccordionTrigger>
-
-  <AccordionContent className='flex flex-col gap-[20px]'>
-<div>
-<h2 className='text-[16px]'> Joining Date * </h2>
-
-<input className='w-full px-3 py-[8px] border-[1px] border-[#484A5C] rounded-[8px]' type="date" name="" id="" />
-
-</div>
-
-
-<div>
-      {/* Top Section: Students + Single Add Button */}
-      <div className='flex justify-between items-center'>
-        <div className='flex flex-wrap gap-[12px] items-center'>
-          {students.map((student, index) => (
-            <span
-              key={index}
-              className='px-5 py-2 text-[18px] text-white bg-[#484A5C] rounded-[8px]'
-            >
-              {student}
-            </span>
-          ))}
-          <AiOutlinePlus
-            onClick={addStudent}
-            className='cursor-pointer border-[1px] border-black text-[40px] rounded-[8px] p-1'
-          />
-        </div>
-      </div>
-
-      {/* Radio + One Remove Button (Only if more than one student) */}
-      <div className='radio mt-4'>
-        <h2 className='text-[16px] mb-1'>Independent Student</h2>
-        <div className='flex justify-between items-center'>
-          <div className='flex gap-2'>
-            <input className='w-5 accent-black' type='radio' />
-            <span>No</span>
-          </div>
-
-          {students.length > 1 && (
-            <Button
-              className='px-6 py-3 text-[#EB5757]'
-              variant='outline'
-              onClick={removeLastStudent}
-            >
-              Remove Student
-            </Button>
-          )}
-        </div>
-      </div>
-    </div>
-     <div>
-      <h2 className='text-[16px]'> Student Name * </h2>
-     <Select>
-  <SelectTrigger className="w-full ">
-    <SelectValue  className='text-[18px]' placeholder="Theme" />
-  </SelectTrigger>
-  <SelectContent className='text-[18px] bg-white'>
-    <SelectItem value="light">Parteek</SelectItem>
-    <SelectItem value="dark">Mohan</SelectItem>
-    <SelectItem value="system">Sohan</SelectItem>
-  </SelectContent>
-</Select>
-
-           </div>
-     <div className='select school'>
-      <h2 className='text-[16px]'> Charter School *  </h2>
-     <Select>
-  <SelectTrigger className="w-full ">
-    <SelectValue className='text-[18px]' placeholder="Select School" />
-  </SelectTrigger>
-  <SelectContent className='text-[18px] bg-white'>
-    <SelectItem value="light">Light</SelectItem>
-    <SelectItem value="dark">Dark</SelectItem>
-    <SelectItem value="system">System</SelectItem>
-  </SelectContent>
-</Select>
-
-           </div>
-           <div className='w-full age-gender flex justify-center items-center gap-4  mx-auto'>
-           <div className='w-full'>
-      <h2 className='text-[16px]'> Age (Yrs) *   </h2>
-     <Select >
-  <SelectTrigger className="w-full   ">
-    <SelectValue className='text-[18px]' placeholder="Enter age" />
-  </SelectTrigger>
-  <SelectContent className='text-[18px] bg-white'>
-    <SelectItem value="light">Light</SelectItem>
-    <SelectItem value="dark">Dark</SelectItem>
-    <SelectItem value="system">System</SelectItem>
-  </SelectContent>
-</Select>
-
-           </div>
-           <div className='w-full'>
-      <h2 className='text-[16px]'> Gender *  </h2>
-     <Select>
-  <SelectTrigger className="w-full ">
-    <SelectValue className='text-[18px]' placeholder="SSelect" />
-  </SelectTrigger>
-  <SelectContent className='text-[18px] bg-white'>
-    <SelectItem value="light">Male</SelectItem>
-    <SelectItem value="dark">Female</SelectItem>
-    <SelectItem value="system">Others</SelectItem>
-  </SelectContent>
-</Select>
-
-           </div>
-           </div>
-        </AccordionContent>
-      </AccordionItem>
-    </Accordion>
+   {/* <Accordion type="single"  collapsible className="  border-[1px] px-5 py-[4px] border-[#484A5C] border-b-[12px]  rounded-[16px]"> */}
+   {renderStudentDetailsSection()}
+    {/* </Accordion> */}
       </div>
       <div className='w-full '>
    <Accordion type="single" collapsible className="px-5 py-[4px] border-[1px] border-[#484A5C] border-b-[12px]  rounded-[16px]">
@@ -729,17 +617,49 @@ const handleProceed = () => {
       </div>
    
       </div>
-      <div className='my-5 flex flex-col mt-[150px] gap-4'>
+      {/* <div className='my-5 flex flex-col mt-[150px] gap-4'>
         <div className='  w-full h-[1px] bg-[#808080]'/>
         <div  className='flex gap-[10px] text-[18px] justify-end  mr-[100px]' >
-        <Button onClick={() => navigate(-1)} className='px-6 py-4 cursor-pointer' variant="outline">Back</Button>     
+
+        <Button onClick={() => navigate(-1)} className='px-6 py-4 cursor-pointer' variant="outline">Back</Button>   
+
         {from=="Independent" && <Button           onClick={handleProceed}
  className='bg-[#484A5C] text-white px-6 py-5 coursor-pointer'>Proceed to payment</Button>}
+
         {from=="Charter" && <Button  onClick={() => setShowPopup(true)} className='bg-[#484A5C] text-white px-6 py-5 cursor-pointer'>Enroll In the Class</Button>}
-        {/* when Proceed to paayment -checkout component */}
+       
        
         </div>
         {showPopup && <RequestSubmittedPopUp navigate={navigate} onClose={() => setShowPopup(false)} />}
+
+
+      </div> */}
+      <div className='my-5 flex flex-col mt-[150px] gap-4'>
+        <div className='  w-full h-[1px] bg-[#808080]'/>
+        <div  className='flex gap-[10px] text-[18px] justify-end  mr-[100px]' >
+        <div onClick={() => navigate(-1)}>
+        <button  className='border-[1px] border-[#484A5C] text-black px-6 py-2  text-[15px] rounded-[8px] cursor-pointer'  type="button">Back</button>
+ {/* <Button text="Back" bgColor="bg-[#484A5C]" textColor="text-white" textSize="text-[16px]" onClick={()=>{navigate("/")}}/> */}
+
+ </div>  
+           
+        {from=="Independent" &&
+ <div onClick={handleProceed} >
+   <button className='bg-[#484A5C] text-white px-6 py-2 rounded-[8px]  text-[15px] cursor-pointer'  type="button">Proceed to payment</button>
+
+ </div>         }
+ 
+        {from=="Charter" &&
+ <div onClick={() => setShowPopup(true)} >
+   <button className='bg-[#484A5C] text-white px-6 py-2 rounded-[8px]  text-[15px] cursor-pointer'  type="button">Enroll In the Class</button>
+
+ </div>         }
+ 
+        {/* when Proceed to paayment -checkout component */}
+       
+        </div>
+        {showPopup && <RequestSubmittedPopUp     navigate={navigate} 
+  onClose={() => setShowPopup(false)} />}
 
 
       </div>

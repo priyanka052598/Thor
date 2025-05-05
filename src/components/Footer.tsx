@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { TiSocialFacebook } from "react-icons/ti";
 import { FaFacebookF } from "react-icons/fa";
 import { BsInstagram } from "react-icons/bs";
@@ -8,12 +8,26 @@ import { MdOutlineMail, MdPhoneInTalk } from "react-icons/md";
 import { LuMapPin } from "react-icons/lu";
 import { FaLinkedinIn } from "react-icons/fa6";
 import { FaWhatsapp } from "react-icons/fa";
+import { Link, useLocation } from 'react-router-dom';
+
 
 
 
 function Footer() {
+
+  function ScrollToTop() {
+    const { pathname } = useLocation();
+  
+    useEffect(() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, [pathname]);
+  
+    return null;
+  }
+  
   return (
-    <div className='md:bg-[url("/footer-image.svg")] bg-[url("/sm-footer.png")] bg-cover w-full md:h-[620px] py-10'>
+    <> <ScrollToTop/>
+      <div className='md:bg-[url("/footer-image.svg")] bg-[url("/sm-footer.png")] bg-cover w-full md:h-[620px] py-10'>
       <div className='md:flex  justify-between  md:px-[100px] px-[20px] md:pt-20 pt-10'>
   {/* Left Section */}
   <div className='md:w-1/3 flex flex-col  md:gap-[60px] gap-[10px]'>
@@ -47,18 +61,23 @@ function Footer() {
       </div>
 
       {/* Middle Section */}
-      <div className=' flex flex-col md:mt-0  mt-[40px] md:gap-[20px] gap-[10px] md:mx-28 '>
-        <h3 className='md:text-[24px] text-[22px] text-white text-left'>Links</h3>
-        <div className='md:text-[20px] text-[16px] md:my-[10px] text-white flex flex-col md:gap-3 gap-1'>
-          <span>Home</span>
-          <span>P.E Courses</span>
-          <span>Academic Courses</span>
-          <span>Charter Schools</span>
-          <span>Make Payment</span>
-          <span>Contact Us</span>
-        </div>
-      </div>
-
+      <div  className='flex flex-col md:mt-0 mt-[40px] md:gap-[20px] gap-[10px] md:mx-28'>
+  <h3 className='md:text-[24px] text-[22px] text-white text-left'>Links</h3>
+  <div className='md:text-[20px] text-[16px] md:my-[10px] text-white flex flex-col md:gap-3 gap-1'>
+    {[
+      { name: 'Home', path: '/' },
+      { name: 'P.E Courses', path: '/pe-courses' },
+      { name: 'Academic Courses', path: '/academic-courses' },
+      { name: 'Charter Schools', path: '/charter-schools' },
+      { name: 'Make Payment', path: '/virtual-payment' },
+      { name: 'Contact Us', path: '/contact-us' }
+    ].map(link => (
+      <Link key={link.name} to={link.path} className="hover:underline">
+        {link.name}
+      </Link>
+    ))}
+  </div>
+</div>
       {/* Right Section */}
       <div className='md:w-1/3 flex flex-col md:mt-0  mt-[40px]  md:gap-[20px] gap-[10px]'>
         <h3 className='md:text-[24px] text-[22px] text-white'>Contact Us</h3>
@@ -82,6 +101,8 @@ function Footer() {
       <div className='md:mt-0 mt-3'>All Rights Reserved</div>
     </div>
     </div>
+    </>
+  
   )
 }
 

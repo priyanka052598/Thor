@@ -1,7 +1,7 @@
 import Button from '@/components/Button';
 import Header from '@/components/Header'
 
-import React from 'react'
+import React, { useRef } from 'react'
 import { text } from 'stream/consumers';
 import CommonHeading from '@/components/CommonHeading';
 import {
@@ -33,24 +33,8 @@ import {
 function Home() {
 
   
-  // const [api, setApi] = React.useState<CarouselApi>()
-  // const [current, setCurrent] = React.useState(0)
-  // const [count, setCount] = React.useState(0)
- 
-  // React.useEffect(() => {
-  //   if (!api) {
-  //     return
-  //   }
- 
-  //   setCount(api.scrollSnapList().length)
-  //   setCurrent(api.selectedScrollSnap() + 1)
- 
-  //   api.on("select", () => {
-  //     setCurrent(api.selectedScrollSnap() + 1)
-  //   })
-  // }, [api])
-
-
+  
+  
 
   const cards = [
     {
@@ -198,6 +182,15 @@ function Home() {
     { image:"testimonial-image-1.svg" ,name: "John Smith", description: "Youth Movement has been a game-changer for my child! The combination of physical education and academic classes keeps them engaged and motivated." },
 
   ];
+  const scrollToWeOffer = () => {
+    const weOfferElement = document.querySelector('.weoffer');
+    if (weOfferElement) {
+      weOfferElement.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start', // Align the top of the element with the top of the viewport
+      });
+    }
+  };
   
   return (
     <div>
@@ -212,7 +205,7 @@ function Home() {
 
         {/* Background Image for small screens */}
   <img
-    src="/sm-home-main.svg" // use your mobile image path here
+    src="/sm-home-main.png" // use your mobile image path here
     alt="Mobile Background"
     className="w-full h-auto object-cover block sm:hidden"
   />
@@ -234,7 +227,7 @@ function Home() {
           </span>
           {/* buttons */}
           <div className='flex flex-col md:flex-row justify-center items-center     md:gap-[40px] gap-[10px]'>
-<Button text="Explore Courses" bgColor="bg-transparent" textColor="text-white"  showArrow={true} />
+<Button  onClick={scrollToWeOffer} text="Explore Courses" bgColor="bg-transparent" textColor="text-white"  showArrow={true} />
 <Button text="Enroll Now" bgColor="bg-white" textColor="text-black" showArrow={true} />
           </div>
         </div>
@@ -270,7 +263,7 @@ function Home() {
   </div>
 </div>
 {/* What we do offer */}
-<div className='md:my-[160px] my-[80px]'>
+<div   className=' weoffer md:my-[160px] my-[80px]'>
 <CommonHeading  bottomcolor='blue' text="What We Do Offer"/>
   {/* Cards  */}
   <div className="flex justify-center flex-wrap md:mx-0 mx-[20px] md:gap-[80px] gap-[40px] md:mt-[80px] mt-[40px]">

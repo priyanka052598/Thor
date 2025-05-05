@@ -5,8 +5,8 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion";
 import { ChevronDown } from 'lucide-react';
 import { FaCreditCard } from "react-icons/fa";
-import { Button as Btn } from "@/components/ui/button"
-import { Button } from '@/components/ui/button';
+import Button from '@/components/Button';
+
 
 
 const RequestSubmittedPopUp = ({  onClose,navigate }: {  onClose: () => void,navigate:any }) => {
@@ -24,7 +24,9 @@ const RequestSubmittedPopUp = ({  onClose,navigate }: {  onClose: () => void,nav
 
         <p className="text-[16px] leading-[1.4] px-8 text-center"> We're excited to have you in the session. You can check the status of your request anytime by visiting your profile.</p>
      <div className='w-full flex justify-center items-center gap-4 mt-6  px-8 pb-10 '>
-      <Btn   className='bg-[#484A5C] text-white  border-[1px] py-5 w-full cursor-pointer ' onClick={()=>{navigate("/")}}>Okay</Btn>
+     <button onClick={()=>{navigate("/")}} className='bg-[#484A5C] w-full rounded-[6px] py-2 text-white cursor-pointer' type="button">OKay</button>
+
+   
      </div>
 
       </div>
@@ -248,7 +250,7 @@ const [showPopup, setShowPopup] = useState(false);
                   <div className='flex flex-col gap-[15px]'>
                     <span style={{ fontFamily: 'Clash Display', fontWeight: 500 }} className='text-[22px]'>Venomo</span>
                     <span className='text-[18px]'>@youthmovementCA</span>
-                    <Button text='Pay using Debit card' bgColor='bg-[#484A5C]' textColor='text-white' textSize='text-[16px]' />
+                 <Button text='Pay using Venomo' bgColor='bg-[#484A5C]' textColor='text-white' textSize='text-[16px]'/>
                   </div>
                 </div>
                 <div className='  gap-[80px] rounded-[16px]  py-5'>
@@ -294,12 +296,19 @@ const [showPopup, setShowPopup] = useState(false);
             <div className='my-5 flex flex-col mt-[150px] gap-4'>
         <div className='  w-full h-[1px] bg-[#808080]'/>
         <div  className='flex gap-[10px] text-[18px] justify-end  mr-[100px]' >
-        <Button onClick={() => navigate(-1)} className='px-6 py-4 cursor-pointer' variant="outline">Back</Button>     
+        <div onClick={() => navigate(-1)}>
+        <button  className='border-[1px] border-[#484A5C] text-black px-6 py-2  text-[15px] rounded-[8px] cursor-pointer'  type="button">Back</button>
+ {/* <Button text="Back" bgColor="bg-[#484A5C]" textColor="text-white" textSize="text-[16px]" onClick={()=>{navigate("/")}}/> */}
+
+ </div>  
+           
         {from=="Independent" &&
-         <Button     
-         onClick={() => setShowPopup(true)}       
- className='bg-[#484A5C] text-white px-6 py-5 coursor-pointer'>Proceed to payment</Button>}
-        {from=="Charter" && <Button  onClick={() => setShowPopup(true)} className='bg-[#484A5C] text-white px-6 py-5 cursor-pointer'>Enroll In the Class</Button>}
+ <div onClick={() => setShowPopup(true)}>
+   <button className='bg-[#484A5C] text-white px-6 py-2 rounded-[8px]  text-[15px] cursor-pointer'  type="button">Enroll In the class</button>
+ {/* <Button text="Proceed to payment" bgColor="bg-[#484A5C]" textColor="text-white" textSize="text-[16px]" onClick={()=>{navigate("/")}}/> */}
+
+ </div>         }
+ 
         {/* when Proceed to paayment -checkout component */}
        
         </div>

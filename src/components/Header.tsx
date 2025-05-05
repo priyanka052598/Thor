@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FaRegCircleUser } from "react-icons/fa6";
 import { IoIosArrowDown } from "react-icons/io";
 import { Link, useLocation } from 'react-router-dom';
@@ -6,13 +6,19 @@ import { HiOutlineMenu, HiOutlineX } from 'react-icons/hi';
 import Button from './Button';
 
 
+
 function Header() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const location = useLocation();
 
+ 
+
+  const [profileDropdownOpen, setProfileDropdownOpen] = useState(false);
+
+
   const tabs = [
     { name: 'Home', paths: ['/'] },
-    { name: 'P.E Courses', paths: ['/pe-courses', '/Pe-Courses-session-screen', '/Checkout-charter-school-first-student'] },
+    { name: 'P.E Courses', paths: ['/pe-courses', '/Pe-Courses-session-screen', '/Checkout-charter-school-first-student','/payment-screen'] },
     { name: 'Academic Courses', paths: ['/academic-courses'] },
     { name: 'Charter Schools', paths: ['/charter-schools'] },
     { name: 'Make payment', paths: ['/virtual-payment'] },
@@ -25,9 +31,9 @@ console.log("location.pathname",location.pathname,isActive)
     <div className="flex justify-between md:mx-[80px] items-center md:px-6 md:py-4 relative z-50
                     bg-transparent md:bg-transparent ">
       {/* Logo */}
-      <div className='md:block hidden'>
+      <Link to={'/'} className='md:block hidden '>
         <img className="w-[75px]" src="/logo-1.svg" alt="Logo" />
-      </div>
+      </Link>
 
       {/* Desktop nav */}
       <nav className="hidden md:flex ">
@@ -54,14 +60,42 @@ console.log("isActive(tab.paths)",isActive(tab.paths))
       <div className=' hidden w-full h-10 bg-white '></div>
 
       {/* Profile (desktop only) */}
-      <div className="hidden md:flex gap-2 items-center text-black md:text-white">
-        <FaRegCircleUser className="text-[28px]" />
-        <IoIosArrowDown className="text-[18px]" />
+      <div className="hidden md:flex gap-2 items-center text-black md:text-white relative">
+  <div
+    onClick={() => setProfileDropdownOpen(prev => !prev)}
+    className="flex items-center gap-2 cursor-pointer"
+  >
+    <FaRegCircleUser className="text-[28px]" />
+    <IoIosArrowDown className="text-[18px]" />
+  </div>
+
+  {profileDropdownOpen && (
+    <div className="absolute top-10 right-0 mt-2 bg-white text-black rounded-md shadow-md py-2 w-[150px] z-50">
+      <div
+        // to="/dashboard"
+        className="block px-4 py-2 hover:bg-gray-100"
+        onClick={() => setProfileDropdownOpen(false)}
+      >
+        Dashboard
       </div>
+      <div
+        // to="/login"
+        className="block px-4 py-2 hover:bg-gray-100"
+        onClick={() => setProfileDropdownOpen(false)}
+      >
+        Login
+      </div>
+    </div>
+  )}
+</div>
+
 
       {/* Hamburger icon (mobile only) */}
      <div className=' md:hidden flex justify-between items-center px-4 w-full  h-[60px] bg-white '>
-     <img className="w-[50px]" src="/logo-1.svg" alt="Logo" />
+ <Link to={'/'}>
+ <img className="w-[50px]" src="/logo-1.svg" alt="Logo" />
+
+ </Link>
 
      <button
         className="md:hidden bg-[#6D718A] rounded-full p-[5px] text-white text-2xl"
