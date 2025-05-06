@@ -39,10 +39,10 @@ function Footer() {
 
         {/* Social Media Icons */}
         <div className='flex md:gap-4 gap-3 '>
-          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className='bg-white rounded-full md:w-[40px] md:h-[40px] w-[30px] h-[30px] md:p-2 p-1 flex justify-center items-center'>
+          <a href="https://www.facebook.com/youthmovement.ca" target="_blank" rel="noopener noreferrer" className='bg-white rounded-full md:w-[40px] md:h-[40px] w-[30px] h-[30px] md:p-2 p-1 flex justify-center items-center'>
             <TiSocialFacebook className='md:text-[35px] text-[20px] text-[#484A5C]' />
           </a>
-          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className='bg-white rounded-full md:w-[40px] md:h-[40px] w-[30px] h-[30px] md:p-2 p-1 flex justify-center items-center'>
+          <a href="https://www.instagram.com/youthmovement.ca/" target="_blank" rel="noopener noreferrer" className='bg-white rounded-full md:w-[40px] md:h-[40px] w-[30px] h-[30px] md:p-2 p-1 flex justify-center items-center'>
             <BsInstagram className='md:text-[35px] text-[20px] text-[#484A5C]' />
           </a>
           <a href="https://wa.me" target="_blank" rel="noopener noreferrer" className='bg-white rounded-full md:w-[40px] md:h-[40px] w-[30px] h-[30px] md:p-2 p-1 flex justify-center items-center'>
@@ -51,7 +51,7 @@ function Footer() {
           <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className='bg-white rounded-full md:w-[40px] md:h-[40px] w-[30px] h-[30px] md:p-2 p-1 flex justify-center items-center'>
             <LuYoutube className='md:text-[35px] text-[20px] text-[#484A5C]' />
           </a>
-          <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className='bg-white rounded-full md:w-[40px] md:h-[40px] w-[30px] h-[30px] md:p-2 p-1 flex justify-center items-center'>
+          <a href="https://x.com/YouthMovementGo" target="_blank" rel="noopener noreferrer" className='bg-white rounded-full md:w-[40px] md:h-[40px] w-[30px] h-[30px] md:p-2 p-1 flex justify-center items-center'>
             <FaXTwitter className='md:text-[35px] text-[20px] text-[#484A5C]' />
           </a>
           <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className='bg-white rounded-full md:w-[40px] md:h-[40px] w-[30px] h-[30px] md:p-2 p-1 flex justify-center items-center'>
